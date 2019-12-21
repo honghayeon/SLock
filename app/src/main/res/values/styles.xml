@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- 상태바 & 액션바 숨기기 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+
+        <!-- EditText -->
+        <item name="colorAccent">@color/mainPurpleOpacity</item> <!--  colorAccent: 커서색, 드래그 시 하이라이트 색, eidtText선택 시 밑줄 하이라이트 색 등 강조 색을 변경 -->
+        <item name="colorControlNormal">@color/mainPurple</item> <!-- 하이라이트 되지 않았을 때 밑줄 색 -->
+    </style>
+
+    <!-- splash -->
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+</resources>
