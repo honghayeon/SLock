@@ -11,7 +11,7 @@ import android.widget.EditText;
 public class SignUpStudentActivity extends AppCompatActivity {
 
     Button signinBtn, signupBtn, continueBtn;
-    EditText sName, sId, sPwd, sStunum, sRoomnum; // 회원가입할 학생 이름, 아이디, 학번, 방번호
+    EditText sName, sId, sPwd1, sPwd2, sStunum, sRoomnum; // 회원가입할 학생 이름, 아이디, 학번, 방번호
     Intent intent;
 
     @Override
@@ -25,7 +25,8 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
         EditText sName = (EditText)findViewById(R.id.sName);
         EditText sId = (EditText)findViewById(R.id.sId);
-        EditText sPwd = (EditText)findViewById(R.id.sPwd);
+        EditText sPwd1 = (EditText)findViewById(R.id.sPwd1);
+        EditText sPwd2 = (EditText)findViewById(R.id.sPwd2);
         EditText sStunum = (EditText) findViewById(R.id.sStunum);
         EditText sRoomnum = (EditText) findViewById(R.id.sRoomnum);
 

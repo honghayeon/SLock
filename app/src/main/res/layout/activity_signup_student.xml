@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SIGN IN"
-        android:textColor="@color/white"
+        android:textColor="@color/whiteOpacity"
         android:textSize="40px"
         android:background="@color/invisible"
         android:stateListAnimator="@null"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:background="@color/invisible"
         android:text="SIGN UP"
-        android:textColor="@color/whiteOpacity"
+        android:textColor="@color/white"
         android:textSize="40px"
         android:stateListAnimator="@null"
         android:layout_marginBottom="50dp"
@@ -82,7 +82,7 @@
             app:layout_constraintTop_toBottomOf="@+id/sName"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/sPwd"
+            app:layout_constraintBottom_toTopOf="@id/sPwd1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ID"
@@ -90,11 +90,11 @@
             android:fontFamily="@font/montserrat_regular"/>
 
         <EditText
-            android:id="@+id/sPwd"
+            android:id="@+id/sPwd1"
             app:layout_constraintTop_toBottomOf="@id/sId"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/sStunum"
+            app:layout_constraintBottom_toTopOf="@+id/sPwd2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -102,8 +102,20 @@
             android:fontFamily="@font/montserrat_regular"/>
 
         <EditText
+            android:id="@+id/sPwd2"
+            app:layout_constraintTop_toBottomOf="@id/sPwd1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/sStunum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:textSize="40px"
+            android:fontFamily="@font/montserrat_regular"/>
+
+        <EditText
             android:id="@+id/sStunum"
-            app:layout_constraintTop_toBottomOf="@id/sPwd"
+            app:layout_constraintTop_toBottomOf="@id/sPwd2"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/sRoomnum"
