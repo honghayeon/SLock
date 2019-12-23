@@ -23,12 +23,12 @@ public class SignUpStudentActivity extends AppCompatActivity {
         signupBtn = (Button)findViewById(R.id.sSignupBtn);
         continueBtn = (Button)findViewById(R.id.sContinueBtn);
 
-        EditText sName = (EditText)findViewById(R.id.sName);
-        EditText sId = (EditText)findViewById(R.id.sId);
-        EditText sPwd1 = (EditText)findViewById(R.id.sPwd1);
-        EditText sPwd2 = (EditText)findViewById(R.id.sPwd2);
-        EditText sStunum = (EditText) findViewById(R.id.sStunum);
-        EditText sRoomnum = (EditText) findViewById(R.id.sRoomnum);
+        sName = (EditText)findViewById(R.id.sName);
+        sId = (EditText)findViewById(R.id.sId);
+        sPwd1 = (EditText)findViewById(R.id.sPwd1);
+        sPwd2 = (EditText)findViewById(R.id.sPwd2);
+        sStunum = (EditText) findViewById(R.id.sStunum);
+        sRoomnum = (EditText) findViewById(R.id.sRoomnum);
 
         intent = new Intent(getApplicationContext(), SignInActivity.class);
 

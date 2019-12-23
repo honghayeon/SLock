@@ -21,8 +21,8 @@ public class SignInActivity extends AppCompatActivity {
         signupBtn = (Button)findViewById(R.id.inSignupBtn);
         continueBtn = (Button)findViewById(R.id.inContinueBtn);
 
-        EditText idEdit = (EditText)findViewById(R.id.inId);
-        EditText pwdEdit = (EditText)findViewById(R.id.inPwd);
+        inId = (EditText)findViewById(R.id.inId);
+        inPwd = (EditText)findViewById(R.id.inPwd);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override

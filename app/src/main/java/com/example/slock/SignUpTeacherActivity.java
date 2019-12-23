@@ -11,7 +11,7 @@ import android.widget.EditText;
 public class SignUpTeacherActivity extends AppCompatActivity {
 
     Button signinBtn, signupBtn, continueBtn;
-    EditText tName, tId, tPwd, tCertnum; // 회원가입할 선생님 이름, 인증번호
+    EditText tName, tId, tPwd1,tPwd2, tCertnum; // 회원가입할 선생님 이름, 인증번호
     Intent intent;
 
     @Override
@@ -23,10 +23,11 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         signupBtn = (Button)findViewById(R.id.tSignupBtn);
         continueBtn = (Button)findViewById(R.id.tContinueBtn);
 
-        EditText tName = (EditText)findViewById(R.id.tName);
-        EditText tId = (EditText)findViewById(R.id.tId);
-        EditText tPwd = (EditText)findViewById(R.id.sPwd);
-        EditText tCertNum = (EditText) findViewById(R.id.tCertnum);
+        tName = (EditText)findViewById(R.id.tName);
+        tId = (EditText)findViewById(R.id.tId);
+        tPwd1 = (EditText)findViewById(R.id.tPwd1);
+        tPwd2 = (EditText)findViewById(R.id.tPwd2);
+        tCertnum = (EditText) findViewById(R.id.tCertnum);
 
         intent = new Intent(getApplicationContext(), SignInActivity.class);
 
