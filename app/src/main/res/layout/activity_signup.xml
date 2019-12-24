@@ -31,10 +31,10 @@
             android:layout_height="wrap_content"
             android:text="SIGN IN"
             android:textColor="@color/whiteOpacity"
-            android:textSize="40px"
+            android:textSize="@dimen/btnF"
             android:background="@color/invisible"
             android:stateListAnimator="@null"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="@dimen/iBtnMB"
             android:fontFamily="@font/montserrat_regular"/>
 
         <Button
@@ -48,9 +48,9 @@
             android:background="@color/invisible"
             android:text="SIGN UP"
             android:textColor="@color/white"
-            android:textSize="40px"
+            android:textSize="@dimen/btnF"
             android:stateListAnimator="@null"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="@dimen/iBtnMB"
             android:fontFamily="@font/montserrat_regular"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,39 +61,38 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
-        android:elevation="0dp"/>
+        app:layout_constraintVertical_weight="1"/>
 
     <Button
         android:id="@+id/teacherBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toTopOf="@id/studentBtn"
-        android:layout_width="1000px"
-        android:layout_height="@dimen/button_height"
+        android:layout_width="@dimen/uBtnW"
+        android:layout_height="@dimen/btnH"
         android:background="@drawable/button2_background"
         android:text="TEACHER →"
-        android:textSize="40px"
+        android:textSize="@dimen/btnF"
         android:textColor="@color/mainPurple"
         android:textAlignment="textStart"
-        android:paddingLeft="50dp"
-        android:layout_marginLeft="600px"
-        android:layout_marginBottom="70px"
+        android:paddingLeft="@dimen/uBtnP"
+        android:layout_marginLeft="@dimen/uBtnML"
+        android:layout_marginBottom="@dimen/iContentMT"
         android:fontFamily="@font/montserrat_regular"/>
 
     <Button
         android:id="@+id/studentBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="1000px"
-        android:layout_height="@dimen/button_height"
+        android:layout_width="@dimen/uBtnW"
+        android:layout_height="@dimen/btnH"
         android:background="@drawable/button_background"
         android:text="STUDENT →"
-        android:textSize="40px"
+        android:textSize="@dimen/btnF"
         android:textColor="@color/white"
         android:textAlignment="textStart"
-        android:paddingLeft="50dp"
-        android:layout_marginLeft="600px"
-        android:layout_marginBottom="70px"
+        android:paddingLeft="@dimen/uBtnP"
+        android:layout_marginLeft="@dimen/uBtnML"
+        android:layout_marginBottom="@dimen/iContentMT"
         android:fontFamily="@font/montserrat_regular"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

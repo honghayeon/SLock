@@ -1,4 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="button_height">110px</dimen>
+    <dimen name="btnW">120dp</dimen>
+    <dimen name="btnH">50dp</dimen>
+    <dimen name="btnF">15sp</dimen>
+    <dimen name="cornerI">85dp</dimen>
+    <dimen name="editF">18sp</dimen>
+    <dimen name="backBtnWH">30dp</dimen>
+    <dimen name="backBtnM">15dp</dimen>
+    <dimen name="MRL">35dp</dimen>
+    <dimen name="P">30dp</dimen>
+
+    <!-- start -->
+    <dimen name="welcomeF">40sp</dimen>
+    <dimen name="blablaF">18sp</dimen>
+
+    <!-- signin -->
+    <dimen name="iBtnMB">50dp</dimen>
+    <dimen name="iContentMT">30dp</dimen> //button margin bottom
+    <dimen name="iContentMB">100dp</dimen>
+    <dimen name="iLogoW">50dp</dimen>
+    <dimen name="iEditF">19sp</dimen>
+
+    <!-- signup -->
+    <dimen name="uBtnW">200dp</dimen>
+    <dimen name="uBtnP">50dp</dimen>
+    <dimen name="uBtnML">230dp</dimen>
+
+    <!-- Main -->
+    <dimen name="mUserF">16sp</dimen>
+    <dimen name="mHopeF">20sp</dimen>
+    <dimen name="mProfileI">60dp</dimen>
+    <dimen name="mLogoutF">11sp</dimen>
+    <dimen name="mBigP">5dp</dimen>
+    <dimen name="mF">15sp</dimen>
+    <dimen name="mM">15dp</dimen>
+    <dimen name="mTimeH">100dp</dimen>
+    <dimen name="mLineW">300dp</dimen>
+    <dimen name="mTextMR">5dp</dimen>
+    <dimen name="mTextMR2">20dp</dimen>
+
+    <!-- MyPage -->
+    <dimen name="myImage">120dp</dimen>
+    <dimen name="myUser">30sp</dimen>
+    <dimen name="myUserMT">10dp</dimen>
+    <dimen name="myJob">18sp</dimen>
+    <dimen name="myMRL">40dp</dimen>
+    <dimen name="myContent">230dp</dimen>
+
 </resources>

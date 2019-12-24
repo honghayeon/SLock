@@ -36,6 +36,9 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 로그인 페이지의 continue가 눌리면
+
+                Intent intent = new Intent(getApplicationContext(), MainStudentActivity.class);
+                startActivity(intent);
             }
         });
     }

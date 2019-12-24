@@ -27,10 +27,10 @@
         android:layout_height="wrap_content"
         android:text="SIGN IN"
         android:textColor="@color/whiteOpacity"
-        android:textSize="40px"
+        android:textSize="@dimen/btnF"
         android:background="@color/invisible"
         android:stateListAnimator="@null"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="@dimen/iBtnMB"
         android:fontFamily="@font/montserrat_regular"/>
 
     <Button
@@ -44,9 +44,9 @@
         android:background="@color/invisible"
         android:text="SIGN UP"
         android:textColor="@color/white"
-        android:textSize="40px"
+        android:textSize="@dimen/btnF"
         android:stateListAnimator="@null"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="@dimen/iBtnMB"
         android:fontFamily="@font/montserrat_regular"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,13 +57,13 @@
         app:layout_constraintBottom_toTopOf="@id/tContinueBtn"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/login_background"
+        android:background="@drawable/content_background"
         android:elevation="1dp"
-        android:layout_marginTop="80px"
-        android:layout_marginLeft="80px"
-        android:layout_marginRight="80px"
-        android:layout_marginBottom="200px"
-        android:padding="100px">
+        android:layout_marginTop="@dimen/iContentMT"
+        android:layout_marginLeft="@dimen/MRL"
+        android:layout_marginRight="@dimen/MRL"
+        android:layout_marginBottom="@dimen/iContentMB"
+        android:padding="@dimen/P">
 
         <EditText
             android:id="@+id/tName"
@@ -73,8 +73,8 @@
             app:layout_constraintBottom_toTopOf="@id/tId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/editF"
             android:hint="Name"
-            android:textSize="40px"
             android:fontFamily="@font/montserrat_regular"/>
 
         <EditText
@@ -85,8 +85,8 @@
             app:layout_constraintBottom_toTopOf="@id/tPwd1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/editF"
             android:hint="ID"
-            android:textSize="40px"
             android:fontFamily="@font/montserrat_regular"/>
 
         <EditText
@@ -97,8 +97,8 @@
             app:layout_constraintBottom_toTopOf="@+id/tPwd2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/editF"
             android:hint="Password"
-            android:textSize="40px"
             android:fontFamily="@font/montserrat_regular"/>
 
         <EditText
@@ -109,8 +109,8 @@
             app:layout_constraintBottom_toTopOf="@+id/tCertnum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/editF"
             android:hint="Confirm Password"
-            android:textSize="40px"
             android:fontFamily="@font/montserrat_regular"/>
 
         <EditText
@@ -121,8 +121,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/editF"
             android:hint="Certification Number"
-            android:textSize="40px"
             android:fontFamily="@font/montserrat_regular"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -135,8 +135,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
-        android:elevation="0dp"/>
+        app:layout_constraintVertical_weight="1"/>
 
     <Button
         android:id="@+id/tContinueBtn"
@@ -144,14 +143,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
+        android:layout_height="@dimen/btnH"
         android:background="@drawable/button_background"
         android:text="CONTINUE"
-        android:textSize="40px"
+        android:textSize="@dimen/btnF"
         android:textColor="@color/white"
-        android:layout_marginLeft="80px"
-        android:layout_marginRight="80px"
-        android:layout_marginBottom="70px"
+        android:layout_marginLeft="@dimen/MRL"
+        android:layout_marginRight="@dimen/MRL"
+        android:layout_marginBottom="@dimen/iContentMT"
         android:fontFamily="@font/montserrat_regular"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

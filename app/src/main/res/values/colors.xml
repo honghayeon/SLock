@@ -11,4 +11,6 @@
     <color name="graphLine">#F1F9FF</color>
     <color name="gray">#F1F0F2</color>
     <color name="navyGray">#78849E</color>
+    <color name="green">#34C759</color>
+    <color name="red">#FF0000</color>
 </resources>

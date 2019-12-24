@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/mytbackBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="@dimen/backBtnWH"
+        android:layout_height="@dimen/backBtnWH"
+        android:background="@color/invisible"
+        android:src="@drawable/back"
+        android:scaleType="fitCenter"
+        android:layout_marginLeft="@dimen/backBtnM"
+        android:layout_marginTop="@dimen/backBtnM"/>
+
+    <ImageView
+        android:id="@+id/mytImage"
+        app:layout_constraintTop_toBottomOf="@id/mytbackBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="@dimen/myImage"
+        android:layout_height="@dimen/myImage"
+        android:src="@drawable/teacher"/>
+
+    <TextView
+        android:id="@+id/mytUser"
+        app:layout_constraintTop_toBottomOf="@id/mytImage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:textSize="@dimen/myUser"
+        android:textColor="@color/black"
+        android:fontFamily="@font/montserrat_bold"
+        android:layout_marginTop="@dimen/myUserMT"/>
+
+    <TextView
+        android:id="@+id/mytJob"
+        app:layout_constraintTop_toBottomOf="@id/mytUser"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teacher"
+        android:textSize="@dimen/myJob"
+        android:textColor="@color/navyGray"
+        android:fontFamily="@font/montserrat_regular"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@id/mytJob"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mytContinueBtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/myContent">
+
+        <TextView
+            android:id="@+id/mytText"
+            android:layout_width="126dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="비밀번호 재설정"
+            android:textColor="@color/navyGray"
+            android:textSize="@dimen/myJob"
+            app:layout_constraintBottom_toTopOf="@+id/mytPwd1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/mytPwd1"
+            app:layout_constraintTop_toBottomOf="@id/mytText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/mytPwd2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/iEditF"
+            android:hint="New Password"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginLeft="@dimen/myMRL"
+            android:layout_marginRight="@dimen/myMRL"/>
+
+        <EditText
+            android:id="@+id/mytPwd2"
+            app:layout_constraintTop_toBottomOf="@id/mytPwd1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/iEditF"
+            android:hint="Confirm New Password"
+            android:fontFamily="@font/montserrat_regular"
+            android:layout_marginLeft="@dimen/myMRL"
+            android:layout_marginRight="@dimen/myMRL"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/mytContinueBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btnH"
+        android:background="@drawable/button_background"
+        android:text="CONTINUE"
+        android:textSize="@dimen/btnF"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/MRL"
+        android:layout_marginRight="@dimen/MRL"
+        android:layout_marginBottom="@dimen/iContentMT"
+        android:fontFamily="@font/montserrat_regular"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

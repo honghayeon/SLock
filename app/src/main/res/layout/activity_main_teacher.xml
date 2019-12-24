@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mtUp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mtDown"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        android:background="@color/white"
+        android:paddingLeft="50px"
+        android:paddingRight="50px">
+
+        <TextView
+        android:id="@+id/mtUser"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/mtHope"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User,"
+        android:textSize="@dimen/mUserF"
+        android:textColor="@color/mainPurple"
+        android:fontFamily="@font/montserrat_regular"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/mtHope"
+            app:layout_constraintTop_toBottomOf="@id/mtUser"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hope school was\nfun today!"
+            android:textSize="@dimen/mHopeF"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_bold"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/mtImage"
+                android:layout_width="@dimen/mProfileI"
+                android:layout_height="@dimen/mProfileI"
+                android:src="@drawable/teacher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/mtLogoutBtn"
+                app:layout_constraintTop_toBottomOf="@id/mtImage"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그아웃"
+                android:textSize="@dimen/mLogoutF"
+                android:textColor="@color/navyGray"
+                android:fontFamily="@font/montserrat_semibold"
+                android:background="@color/invisible"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mtDown"
+        app:layout_constraintTop_toBottomOf="@+id/mtUp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="4"
+        android:background="@color/gray"
+        android:padding="@dimen/mBigP">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mtDownUp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/mtDownDown"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="1"
+            android:padding="@dimen/mBigP">
+
+            <TextView
+                android:id="@+id/mtText1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/mtContent1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="학생 현관문 요청 현황"
+                android:textSize="@dimen/mF"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintVertical_weight="1"
+                android:layout_marginLeft="@dimen/mM"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mtContent1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/content_background"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mtText1"
+                app:layout_constraintVertical_weight="8"
+                android:layout_marginLeft="@dimen/mM"
+                android:layout_marginRight="@dimen/mM"
+                android:layout_marginBottom="@dimen/mM">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mtDownDown"
+            app:layout_constraintTop_toBottomOf="@id/mtDownUp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="1"
+            android:padding="@dimen/mBigP">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mtDownDownLeft"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/mtDownDownRight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintHorizontal_weight="1">
+
+                <TextView
+                    android:id="@+id/mtText2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/mtContent2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="현관문 관리"
+                    android:textSize="@dimen/mF"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/montserrat_bold"
+                    app:layout_constraintVertical_weight="1"
+                    android:layout_marginLeft="@dimen/mM"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mtContent2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/content_background"
+                    android:elevation="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtText2"
+                    app:layout_constraintVertical_weight="8"
+                    android:layout_marginLeft="@dimen/mM"
+                    android:layout_marginRight="@dimen/mM"
+                    android:layout_marginBottom="@dimen/mM">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mtDownDownRight"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/mtDownDownLeft"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintHorizontal_weight="1">
+
+                <TextView
+                    android:id="@+id/mtText3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/mtContent3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="호실문 관리"
+                    android:textSize="@dimen/mF"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/montserrat_bold"
+                    app:layout_constraintVertical_weight="1"
+                    android:layout_marginLeft="@dimen/mM"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mtContent3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@drawable/content_background"
+                    android:elevation="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtText3"
+                    app:layout_constraintVertical_weight="8"
+                    android:layout_marginLeft="@dimen/mM"
+                    android:layout_marginRight="@dimen/mM"
+                    android:layout_marginBottom="@dimen/mM">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        app:layout_constraintTop_toTopOf="@+id/mtDown"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="@dimen/cornerI"
+        android:layout_height="@dimen/cornerI"
+        android:src="@drawable/radius"
+        android:rotation="180"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
