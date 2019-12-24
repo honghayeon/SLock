@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.slock">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/slock_logo"
@@ -28,6 +30,8 @@
         <activity android:name=".MainStudentActivity" />
         <activity android:name=".MyPageTeacherActivity" />
         <activity android:name=".MyPageStudentActivity" />
+        <activity android:name=".DoorActivity" />
+        <activity android:name=".LogActivity" />
     </application>
 
 </manifest>

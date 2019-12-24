@@ -10,13 +10,13 @@
         android:id="@+id/mytbackBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_width="@dimen/backBtnWH"
-        android:layout_height="@dimen/backBtnWH"
+        android:layout_width="@dimen/imageBtnWH"
+        android:layout_height="@dimen/imageBtnWH"
         android:background="@color/invisible"
         android:src="@drawable/back"
         android:scaleType="fitCenter"
-        android:layout_marginLeft="@dimen/backBtnM"
-        android:layout_marginTop="@dimen/backBtnM"/>
+        android:layout_marginTop="@dimen/backBtnM"
+        android:layout_marginLeft="@dimen/backBtnM"/>
 
     <ImageView
         android:id="@+id/mytImage"

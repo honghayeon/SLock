@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -18,7 +22,7 @@ import java.sql.Time;
 public class MainStudentActivity extends AppCompatActivity {
 
     TextView userName;
-    ImageView myPage;
+    ImageButton myPage, alarm;
     Button logoutBtn, requsetBtn;
     TimePicker time1, time2;
 
@@ -29,7 +33,8 @@ public class MainStudentActivity extends AppCompatActivity {
 
         userName = (TextView)findViewById(R.id.msUser); // user 이름 받아와서 userName.setText(); 해주기
 
-        myPage = (ImageView)findViewById(R.id.msImage);
+        myPage = (ImageButton)findViewById(R.id.msImage);
+        alarm = (ImageButton)findViewById(R.id.msAlarm);
 
         logoutBtn = (Button)findViewById(R.id.msLogoutBtn);
         requsetBtn = (Button)findViewById(R.id.msRequBtn);
@@ -56,7 +61,7 @@ public class MainStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 시간 요청 보내면
-                Toast.makeText(getApplicationContext(), "요청 완료",Toast.LENGTH_SHORT); //토스트 커스텀 코드 가져오기
+                ToastCustom("요청 완료");
             }
         });
 
@@ -68,5 +73,20 @@ public class MainStudentActivity extends AppCompatActivity {
             time1.setIs24HourView(true);
             time2.setIs24HourView(true);
         }
+    }
+
+    public void ToastCustom(String word){
+        LayoutInflater inflater = getLayoutInflater();
+
+        View layout = inflater.inflate(R.layout.toastborder, (ViewGroup)findViewById(R.id.toast_layout_root));
+        TextView text = layout.findViewById(R.id.text);
+
+        Toast toast = new Toast(getApplicationContext());
+        text.setText(word);
+        toast.setGravity(Gravity.CENTER, 0, 500);
+        toast.setDuration(Toast.LENGTH_SHORT);
+
+        toast.setView(layout);
+        toast.show();
     }
 }
