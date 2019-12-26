@@ -109,7 +109,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                                             ToastCustom("회원가입 성공");
                                             // ToastCustom(resultName +  "님 회원가입을 환영합니다!");
 
-                                            finish();
+                                            startActivity(intent);
                                         }
                                         else{
                                             ToastCustom("인증번호가 일치하지 않습니다.");
