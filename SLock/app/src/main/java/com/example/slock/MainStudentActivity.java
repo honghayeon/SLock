@@ -22,7 +22,7 @@ import java.sql.Time;
 public class MainStudentActivity extends AppCompatActivity {
 
     TextView userName, mainDoorState, doorState;
-    ImageButton myPage, alarm;
+    ImageButton myPage;
     Button logoutBtn, requsetBtn;
     TimePicker time1, time2;
 
@@ -34,7 +34,6 @@ public class MainStudentActivity extends AppCompatActivity {
         userName = (TextView)findViewById(R.id.msUser); // user 이름 받아와서 userName.setText(); 해주기
 
         myPage = (ImageButton)findViewById(R.id.msImage);
-        alarm = (ImageButton)findViewById(R.id.msAlarm);
 
         logoutBtn = (Button)findViewById(R.id.msLogoutBtn);
         requsetBtn = (Button)findViewById(R.id.msRequBtn);

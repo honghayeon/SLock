@@ -27,8 +27,6 @@ import java.util.HashMap;
 
 public class SignUpTeacherActivity extends AppCompatActivity {
 
-    final RequestQueue queue = Volley.newRequestQueue(SignUpTeacherActivity.this);
-
     Button signinBtn, signupBtn, continueBtn;
     EditText tName, tId, tPwd1,tPwd2, tCertnum; // 회원가입할 선생님 이름, 인증번호
     Intent intent;
@@ -37,6 +35,8 @@ public class SignUpTeacherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_teacher);
+
+        final RequestQueue queue = Volley.newRequestQueue(SignUpTeacherActivity.this);
 
         signinBtn = (Button)findViewById(R.id.tSigninBtn);
         signupBtn = (Button)findViewById(R.id.tSignupBtn);

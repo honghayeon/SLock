@@ -27,8 +27,6 @@ import java.util.HashMap;
 
 public class SignInActivity extends AppCompatActivity {
 
-    final RequestQueue queue = Volley.newRequestQueue(SignInActivity.this);
-
     Button signupBtn, continueBtn;
     EditText inId, inPwd; // 로그인하기 위해 입력한 id와 pwd
 
@@ -36,6 +34,8 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+        final RequestQueue queue = Volley.newRequestQueue(SignInActivity.this);
 
         signupBtn = (Button)findViewById(R.id.inSignupBtn);
         continueBtn = (Button)findViewById(R.id.inContinueBtn);
@@ -77,18 +77,18 @@ public class SignInActivity extends AppCompatActivity {
                                 try {
                                     JSONObject jsonObject = new JSONObject(response.toString());
                                     String result=jsonObject.getString("status");
-                                    if(result.equals("students")){
+                                    if(result.equals("student")){
                                         ToastCustom("로그인 성공");
                                         // ToastCustom(resultName +  "님 로그인을 환영합니다!");
 
-                                        Intent intent = new Intent(getApplicationContext(), MainStudentActivity.class);
-                                        startActivity(intent);
+                                        Intent intent1 = new Intent(getApplicationContext(), MainStudentActivity.class);
+                                        startActivity(intent1);
                                     }
                                     else if(result.equals("teacher")){
                                         ToastCustom("로그인 성공");
 
-                                        Intent intent = new Intent(getApplicationContext(), MainTeacherActivity.class);
-                                        startActivity(intent);
+                                        Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
+                                        startActivity(intent2);
                                     }
                                     else{
                                         Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
