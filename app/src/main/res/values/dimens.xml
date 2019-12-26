@@ -11,8 +11,10 @@
     <dimen name="P">30dp</dimen>
 
     <!-- start -->
-    <dimen name="welcomeF">40sp</dimen>
-    <dimen name="blablaF">18sp</dimen>
+    <dimen name="sMeetF">14dp</dimen>
+    <dimen name="sWelcomeF">40sp</dimen>
+    <dimen name="sWelcomMB">15dp</dimen>
+    <dimen name="sBlablaF">18sp</dimen>
 
     <!-- signin -->
     <dimen name="iBtnMB">50dp</dimen>
@@ -43,16 +45,23 @@
     <!-- MyPage -->
     <dimen name="myImage">120dp</dimen>
     <dimen name="myUser">30sp</dimen>
-    <dimen name="myUserMT">10dp</dimen>
+    <dimen name="myUserMT">20dp</dimen>
     <dimen name="myJob">18sp</dimen>
     <dimen name="myMRL">40dp</dimen>
     <dimen name="myContent">230dp</dimen>
 
     <!-- Door -->
     <dimen name="dBarF">25sp</dimen>
-    <dimen name="dSecondP">30dp</dimen>
 
     <!-- Log -->
     <dimen name="lReM">30dp</dimen>
+
+    <!-- Frag -->
+    <dimen name="fH">50dp</dimen>
+
+    <!-- Toast -->
+    <dimen name="tF">16sp</dimen>
+    <dimen name="tP">10dp</dimen>
+    <dimen name="tMB">30dp</dimen>
 
 </resources>

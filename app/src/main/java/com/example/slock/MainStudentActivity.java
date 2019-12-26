@@ -21,7 +21,7 @@ import java.sql.Time;
 
 public class MainStudentActivity extends AppCompatActivity {
 
-    TextView userName;
+    TextView userName, mainDoorState, doorState;
     ImageButton myPage, alarm;
     Button logoutBtn, requsetBtn;
     TimePicker time1, time2;
@@ -42,6 +42,9 @@ public class MainStudentActivity extends AppCompatActivity {
         time1 = (TimePicker)findViewById(R.id.msTime1);
         time2 = (TimePicker)findViewById(R.id.msTime2);
 
+        mainDoorState = (TextView)findViewById(R.id.msMainDoorState); // 현관문 상태 (Close, Open) setText랑 textColor (green, red)
+        doorState = (TextView)findViewById(R.id.msDoorState); // 호실문 상태
+
         myPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +64,7 @@ public class MainStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 시간 요청 보내면
-                ToastCustom("요청 완료");
+//                ToastCustom("요청 완료");
             }
         });
 
@@ -73,20 +76,5 @@ public class MainStudentActivity extends AppCompatActivity {
             time1.setIs24HourView(true);
             time2.setIs24HourView(true);
         }
-    }
-
-    public void ToastCustom(String word){
-        LayoutInflater inflater = getLayoutInflater();
-
-        View layout = inflater.inflate(R.layout.toastborder, (ViewGroup)findViewById(R.id.toast_layout_root));
-        TextView text = layout.findViewById(R.id.text);
-
-        Toast toast = new Toast(getApplicationContext());
-        text.setText(word);
-        toast.setGravity(Gravity.CENTER, 0, 500);
-        toast.setDuration(Toast.LENGTH_SHORT);
-
-        toast.setView(layout);
-        toast.show();
     }
 }

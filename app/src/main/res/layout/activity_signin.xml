@@ -108,7 +108,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/iEditF"
                 android:hint="Password"
-                android:fontFamily="@font/montserrat_regular"/>
+                android:fontFamily="@font/montserrat_regular"
+                android:inputType="textPassword"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

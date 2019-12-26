@@ -63,8 +63,8 @@ public class MainTeacherActivity extends AppCompatActivity {
         logBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent intent2 = new Intent(getApplicationContext(), LogActivity.class);
-                //startActivity(intent2);
+                 Intent intent2 = new Intent(getApplicationContext(), LogActivity.class);
+                startActivity(intent2);
             }
         });
 

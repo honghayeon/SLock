@@ -17,7 +17,7 @@
         app:layout_constraintVertical_weight="1">
 
         <ImageButton
-            android:id="@+id/mytbackBtn"
+            android:id="@+id/dbackBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
     android:layout_height="0dp"
     app:layout_constraintVertical_weight="5"
     android:background="@color/gray"
-        android:padding="@dimen/dSecondP">
+        android:padding="@dimen/mContentP">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/msContent1"
@@ -65,7 +65,8 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_weight="8"
-            android:padding="@dimen/mContentP">
+            android:padding="@dimen/mContentP"
+            android:layout_margin="@dimen/mM">
 
             <TextView
                 android:id="@+id/dText1"

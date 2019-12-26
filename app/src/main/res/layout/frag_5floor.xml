@@ -13,7 +13,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -43,7 +43,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -73,7 +73,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -103,7 +103,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -133,7 +133,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -163,7 +163,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -193,7 +193,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -223,7 +223,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -253,7 +253,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -283,7 +283,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -313,7 +313,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -343,7 +343,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -373,7 +373,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -403,7 +403,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -433,7 +433,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -463,7 +463,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -493,7 +493,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -523,7 +523,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -553,7 +553,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 
@@ -583,7 +583,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/fH"
             android:gravity="center"
             android:background="@drawable/list_background">
 

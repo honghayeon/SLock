@@ -245,7 +245,7 @@
                         android:layout_height="wrap_content"
                         android:text="현관문"
                         android:textColor="@color/navyGray"
-                        android:fontFamily="@font/montserrat_semibold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"
                         app:layout_constraintHorizontal_chainStyle="packed"/>
@@ -272,7 +272,7 @@
                         android:layout_height="wrap_content"
                         android:text="Log"
                         android:textColor="@color/navyGray"
-                        android:fontFamily="@font/montserrat_semibold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"/>
 
@@ -299,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:text="호실문 관리"
                         android:textColor="@color/navyGray"
-                        android:fontFamily="@font/montserrat_semibold"
+                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"/>
 

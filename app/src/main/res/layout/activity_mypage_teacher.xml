@@ -25,7 +25,8 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="@dimen/myImage"
         android:layout_height="@dimen/myImage"
-        android:src="@drawable/teacher"/>
+        android:src="@drawable/teacher"
+        android:layout_marginTop="@dimen/myUserMT"/>
 
     <TextView
         android:id="@+id/mytUser"
@@ -62,8 +63,8 @@
 
         <TextView
             android:id="@+id/mytText"
-            android:layout_width="126dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semibold"
             android:text="비밀번호 재설정"
             android:textColor="@color/navyGray"
@@ -85,7 +86,8 @@
             android:hint="New Password"
             android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"/>
+            android:layout_marginRight="@dimen/myMRL"
+            android:inputType="textPassword"/>
 
         <EditText
             android:id="@+id/mytPwd2"
@@ -99,7 +101,8 @@
             android:hint="Confirm New Password"
             android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"/>
+            android:layout_marginRight="@dimen/myMRL"
+            android:inputType="textPassword"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

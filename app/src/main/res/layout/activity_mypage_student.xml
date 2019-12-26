@@ -59,7 +59,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mysDown"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1">
 
         <TextView
             android:id="@+id/mysText"
@@ -97,7 +98,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mysContinueBtn"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="2">
 
         <TextView
             android:id="@+id/mysText2"
@@ -124,7 +126,8 @@
             android:hint="New Password"
             android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"/>
+            android:layout_marginRight="@dimen/myMRL"
+            android:inputType="textPassword"/>
 
         <EditText
             android:id="@+id/mysPwd2"
@@ -138,7 +141,8 @@
             android:hint="Confirm New Password"
             android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"/>
+            android:layout_marginRight="@dimen/myMRL"
+            android:inputType="textPassword"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btnW">200dp</dimen>
+    <dimen name="btnH">70dp</dimen>
+    <dimen name="btnF">30sp</dimen>
+    <dimen name="cornerI">120dp</dimen>
+    <dimen name="editF">30sp</dimen>
+    <dimen name="imageBtnWH">50dp</dimen>
+    <dimen name="backBtnM">27dp</dimen>
+    <dimen name="MRL">60dp</dimen>
+    <dimen name="P">50dp</dimen>
+
+    <!-- start -->
+    <dimen name="sMeetF">20dp</dimen>
+    <dimen name="sWelcomeF">60sp</dimen>
+    <dimen name="sWelcomMB">25dp</dimen>
+    <dimen name="sBlablaF">24sp</dimen>
+
+    <!-- signin -->
+    <dimen name="iBtnMB">100dp</dimen>
+    <dimen name="iContentMT">60dp</dimen> //button margin bottom
+    <dimen name="iContentMB">180dp</dimen>
+    <dimen name="iLogoW">100dp</dimen>
+    <dimen name="iEditF">30sp</dimen>
+
+    <!-- signup -->
+    <dimen name="uBtnW">400dp</dimen>
+    <dimen name="uBtnP">100dp</dimen>
+    <dimen name="uBtnML">430dp</dimen>
+
+    <!-- Main -->
+    <dimen name="mUserF">32sp</dimen>
+    <dimen name="mHopeF">40sp</dimen>
+    <dimen name="mProfileI">120dp</dimen>
+    <dimen name="mLogoutF">22sp</dimen>
+    <dimen name="mBigP">10dp</dimen>
+    <dimen name="mF">32sp</dimen>
+    <dimen name="mM">30dp</dimen>
+    <dimen name="mTimeH">200dp</dimen>
+    <dimen name="mLineM">100dp</dimen>
+    <dimen name="mTextMR">10dp</dimen>
+    <dimen name="mTextMR2">40dp</dimen>
+    <dimen name="mContentP">40dp</dimen>
+
+    <!-- MyPage -->
+    <dimen name="myImage">200dp</dimen>
+    <dimen name="myUser">50sp</dimen>
+    <dimen name="myUserMT">40dp</dimen>
+    <dimen name="myJob">34sp</dimen>
+    <dimen name="myMRL">80dp</dimen>
+    <dimen name="myContent">380dp</dimen>
+
+    <!-- Door -->
+    <dimen name="dBarF">40sp</dimen>
+    <dimen name="dSecondP">40dp</dimen>
+
+    <!-- Log -->
+    <dimen name="lReM">60dp</dimen>
+
+    <!-- Frag -->
+    <dimen name="fH">80dp</dimen>
+
+    <!-- Toast -->
+    <dimen name="tF">18sp</dimen>
+    <dimen name="tP">20dp</dimen>
+    <dimen name="tMB">60dp</dimen>
+
+</resources>

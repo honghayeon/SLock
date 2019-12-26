@@ -48,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text="MEET UP"
+            android:textSize="@dimen/sMeetF"
             android:textColor="@color/mainPink"
             android:fontFamily="@font/montserrat_regular"
             app:layout_constraintVertical_weight="2"
@@ -62,10 +63,11 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text="WELCOME"
-            android:textSize="@dimen/welcomeF"
+            android:textSize="@dimen/sWelcomeF"
             android:textColor="@color/black"
             android:fontFamily="@font/montserrat_bold"
-            app:layout_constraintVertical_weight="1.1"/>
+            app:layout_constraintVertical_weight="1.1"
+            android:layout_marginBottom="@dimen/sWelcomMB"/>
 
         <TextView
             android:id="@+id/blabla"
@@ -75,10 +77,12 @@
             app:layout_constraintBottom_toTopOf="@+id/btnLayout"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="SLock will always strive for a pleasant dormitory life.\nHave fun today!. Thank you for join with us."
+            android:text="SLock will always strive for a pleasant dormitory life.\nHave fun today! Thank you for join with us."
             android:textColor="@color/navyGray"
             android:fontFamily="@font/montserrat_regular"
-            app:layout_constraintVertical_weight="1"/>
+            android:textSize="@dimen/sBlablaF"
+            android:textAlignment="center"
+            app:layout_constraintVertical_weight="1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnLayout"
