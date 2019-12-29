@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
     Button signinBtn, signupBtn, continueBtn;
     EditText tName, tId, tPwd1,tPwd2, tCertnum; // 회원가입할 선생님 이름, 인증번호
     Intent intent;
+    String url = "http://10.120.74.188:8080/signup";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,25 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         tPwd1 = (EditText)findViewById(R.id.tPwd1);
         tPwd2 = (EditText)findViewById(R.id.tPwd2);
         tCertnum = (EditText) findViewById(R.id.tCertnum);
+
+        tId.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // 텍스트가 입력되기 전
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // 텍스트 변화가 있을 때
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // 텍스트 입력된 후
+
+
+            }
+        });
 
         intent = new Intent(getApplicationContext(), SignInActivity.class);
 
@@ -89,14 +111,11 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                 }
 
                 if(tPwd1.getText().toString().equals(tPwd2.getText().toString())){
-                    // ************꼭 URL 수정할 것*************
-                    String url = "http://10.120.74.188:8080/login";
-                    // ************꼭 URL 수정할 것*************
                     HashMap<String, String> data = new HashMap<>();
                     data.put("name", tName.getText().toString());
                     data.put("id", tId.getText().toString());
                     data.put("pw", tPwd1.getText().toString());
-                    data.put("cnum", tCertnum.getText().toString());
+                    data.put("level","2");
                     // Request a string response from the provided URL
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
                             new Response.Listener<JSONObject>() {
@@ -130,6 +149,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                 }
                 else{
                     ToastCustom("비밀번호가 일치하지 않습니다.");
+                    // snackbar
                 }
             }
         });

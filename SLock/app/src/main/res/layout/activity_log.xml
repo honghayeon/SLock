@@ -12,9 +12,7 @@
         app:layout_constraintBottom_toTopOf="@+id/lRecycler"
         android:layout_width="@dimen/imageBtnWH"
         android:layout_height="@dimen/imageBtnWH"
-        android:background="@color/invisible"
         android:src="@drawable/back"
-        android:scaleType="fitCenter"
         android:layout_marginTop="@dimen/backBtnM"
         android:layout_marginLeft="@dimen/backBtnM"/>
 

@@ -3,6 +3,7 @@
     package="com.example.slock">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -22,14 +23,23 @@
             </intent-filter>
         </activity>
         <activity android:name=".StartActivity" />
-        <activity android:name=".SignInActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SignUpStudentActivity" />
-        <activity android:name=".SignUpTeacherActivity" />
+        <activity android:name=".SignInActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity android:name=".SignUpActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".SignUpStudentActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity android:name=".SignUpTeacherActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity android:name=".MainTeacherActivity" />
         <activity android:name=".MainStudentActivity" />
-        <activity android:name=".MyPageTeacherActivity" />
-        <activity android:name=".MyPageStudentActivity" />
+        <activity android:name=".MyPageTeacherActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".MyPageStudentActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".DoorActivity" />
         <activity android:name=".LogActivity" />
     </application>

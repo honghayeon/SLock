@@ -49,12 +49,49 @@
         android:layout_height="wrap_content"
         android:text="Student"
         android:textSize="@dimen/myJob"
-        android:textColor="@color/navyGray"
-        android:fontFamily="@font/montserrat_regular"/>
+        android:textColor="@color/navyGray"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mysUp"
         app:layout_constraintTop_toBottomOf="@id/mysJob"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/mysMd"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/mysText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="현재 비밀번호"
+            android:textColor="@color/navyGray"
+            android:textSize="@dimen/myJob"
+            app:layout_constraintBottom_toTopOf="@+id/mysNowPwd"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/mysNowPwd"
+            app:layout_constraintTop_toBottomOf="@id/mysText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/iEditF"
+            android:hint="Room Number"
+            android:layout_marginLeft="@dimen/myMRL"
+            android:layout_marginRight="@dimen/myMRL"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mysMd"
+        app:layout_constraintTop_toBottomOf="@id/mysUp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mysDown"
@@ -63,7 +100,7 @@
         app:layout_constraintVertical_weight="1">
 
         <TextView
-            android:id="@+id/mysText"
+            android:id="@+id/mysText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semibold"
@@ -77,7 +114,7 @@
 
         <EditText
             android:id="@+id/mysRoom"
-            app:layout_constraintTop_toBottomOf="@id/mysText"
+            app:layout_constraintTop_toBottomOf="@id/mysText1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +122,6 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="Room Number"
-            android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
             android:layout_marginRight="@dimen/myMRL"/>
 
@@ -93,7 +129,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mysDown"
-        app:layout_constraintTop_toBottomOf="@id/mysUp"
+        app:layout_constraintTop_toBottomOf="@id/mysMd"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/mysContinueBtn"
@@ -124,7 +160,6 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="New Password"
-            android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
             android:layout_marginRight="@dimen/myMRL"
             android:inputType="textPassword"/>
@@ -139,7 +174,6 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="Confirm New Password"
-            android:fontFamily="@font/montserrat_regular"
             android:layout_marginLeft="@dimen/myMRL"
             android:layout_marginRight="@dimen/myMRL"
             android:inputType="textPassword"/>
@@ -155,12 +189,8 @@
         android:layout_height="@dimen/btnH"
         android:background="@drawable/button3_background"
         android:text="CONTINUE"
-        android:textSize="@dimen/btnF"
         android:textColor="@color/white"
-        android:layout_marginLeft="@dimen/MRL"
-        android:layout_marginRight="@dimen/MRL"
-        android:layout_marginBottom="@dimen/iContentMT"
-        android:fontFamily="@font/montserrat_regular"/>
+        style="@style/ContinueBtnStyle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

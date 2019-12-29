@@ -34,8 +34,6 @@
                 android:id="@+id/room401"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -64,8 +62,6 @@
                 android:id="@+id/room402"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -94,8 +90,6 @@
                 android:id="@+id/room403"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -124,8 +118,6 @@
                 android:id="@+id/room404"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -154,8 +146,6 @@
                 android:id="@+id/room405"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -184,8 +174,6 @@
                 android:id="@+id/room406"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -214,8 +202,6 @@
                 android:id="@+id/room407"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -244,8 +230,6 @@
                 android:id="@+id/room408"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -274,8 +258,6 @@
                 android:id="@+id/room409"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -304,8 +286,6 @@
                 android:id="@+id/room410"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -334,8 +314,6 @@
                 android:id="@+id/room411"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -364,8 +342,6 @@
                 android:id="@+id/room412"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -394,8 +370,6 @@
                 android:id="@+id/room413"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -424,8 +398,6 @@
                 android:id="@+id/room414"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -454,8 +426,6 @@
                 android:id="@+id/room415"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -484,8 +454,6 @@
                 android:id="@+id/room416"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -514,8 +482,6 @@
                 android:id="@+id/room417"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -544,8 +510,6 @@
                 android:id="@+id/room418"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -574,8 +538,6 @@
                 android:id="@+id/room419"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>
@@ -604,8 +566,6 @@
                 android:id="@+id/room420"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:track="@drawable/switch_track_selector"
-                android:thumb="@drawable/switch_thumb"
                 android:layout_marginRight="@dimen/MRL"/>
 
         </LinearLayout>

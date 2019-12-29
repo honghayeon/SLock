@@ -16,13 +16,14 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         signinBtn = (Button)findViewById(R.id.upSigninBtn);
-        teacherBtn = (Button)findViewById(R.id.teacherBtn);
-        studentBtn = (Button)findViewById(R.id.studentBtn);
+        teacherBtn = (Button)findViewById(R.id.upTeacherBtn);
+        studentBtn = (Button)findViewById(R.id.upStudentBtn);
 
         signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
             }
         });
 

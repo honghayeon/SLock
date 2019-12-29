@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class StartActivity extends AppCompatActivity {
 
     Button nextBtn;
+    Boolean saveData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +19,15 @@ public class StartActivity extends AppCompatActivity {
 
         nextBtn = (Button)findViewById(R.id.nextBtn);
 
+        saveData = SharedPreference.getAttributeBool(getApplicationContext(), "save");
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
+
+                finish();
             }
         });
     }

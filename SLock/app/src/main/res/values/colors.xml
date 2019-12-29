@@ -13,4 +13,5 @@
     <color name="navyGray">#78849E</color>
     <color name="green">#34C759</color>
     <color name="red">#FF0000</color>
+    <color name="dialogBack">#1A000000</color>
 </resources>

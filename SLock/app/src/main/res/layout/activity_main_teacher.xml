@@ -29,8 +29,7 @@
         android:text="User,"
         android:textSize="@dimen/mUserF"
         android:textColor="@color/mainPurple"
-        android:fontFamily="@font/montserrat_regular"
-            app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintVertical_chainStyle="packed"/>
 
         <TextView
             android:id="@+id/mtHope"
@@ -222,8 +221,7 @@
                         android:background="@drawable/button_background"
                         android:textColor="@color/white"
                         android:text="예약"
-                        android:textSize="@dimen/btnF"
-                        android:fontFamily="@font/montserrat_regular"/>
+                        android:textSize="@dimen/btnF"/>
 
                     <View
                         android:id="@+id/mtLine"
@@ -245,7 +243,6 @@
                         android:layout_height="wrap_content"
                         android:text="현관문"
                         android:textColor="@color/navyGray"
-                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"
                         app:layout_constraintHorizontal_chainStyle="packed"/>
@@ -258,8 +255,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:track="@drawable/switch_track_selector"
-                        android:thumb="@drawable/switch_thumb"
                         android:layout_marginRight="@dimen/mTextMR2"/>
 
                     <TextView
@@ -272,7 +267,6 @@
                         android:layout_height="wrap_content"
                         android:text="Log"
                         android:textColor="@color/navyGray"
-                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"/>
 
@@ -284,9 +278,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="@dimen/imageBtnWH"
                         android:layout_height="@dimen/imageBtnWH"
-                        android:background="@color/invisible"
                         android:src="@drawable/log"
-                        android:scaleType="fitCenter"
                         android:layout_marginRight="@dimen/mTextMR2"/>
 
                     <TextView
@@ -299,7 +291,6 @@
                         android:layout_height="wrap_content"
                         android:text="호실문 관리"
                         android:textColor="@color/navyGray"
-                        android:fontFamily="@font/montserrat_regular"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"/>
 
@@ -311,9 +302,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="@dimen/imageBtnWH"
                         android:layout_height="@dimen/imageBtnWH"
-                        android:background="@color/invisible"
-                        android:src="@drawable/door"
-                        android:scaleType="fitCenter"/>
+                        android:src="@drawable/door"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,7 +50,6 @@
             android:text="MEET UP"
             android:textSize="@dimen/sMeetF"
             android:textColor="@color/mainPink"
-            android:fontFamily="@font/montserrat_regular"
             app:layout_constraintVertical_weight="2"
             android:gravity="center"/>
 
@@ -79,7 +78,6 @@
             android:layout_height="0dp"
             android:text="SLock will always strive for a pleasant dormitory life.\nHave fun today! Thank you for join with us."
             android:textColor="@color/navyGray"
-            android:fontFamily="@font/montserrat_regular"
             android:textSize="@dimen/sBlablaF"
             android:textAlignment="center"
             app:layout_constraintVertical_weight="1" />
@@ -105,8 +103,7 @@
                 android:background="@drawable/button_background"
                 android:text="NEXT"
                 android:textSize="@dimen/btnF"
-                android:textColor="@color/white"
-                android:fontFamily="@font/montserrat_regular"/>
+                android:textColor="@color/white"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

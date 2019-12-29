@@ -214,8 +214,7 @@
                     android:background="@drawable/button3_background"
                     android:textColor="@color/white"
                     android:text="요청"
-                    android:textSize="@dimen/btnF"
-                    android:fontFamily="@font/montserrat_regular"/>
+                    android:textSize="@dimen/btnF"/>
 
                 <View
                     android:id="@+id/msLine"
@@ -252,7 +251,6 @@
                     android:layout_height="wrap_content"
                     android:text="Open"
                     android:textColor="@color/green"
-                    android:fontFamily="@font/montserrat_regular"
                     android:textSize="@dimen/mUserF"
                     android:layout_marginRight="@dimen/mTextMR2"/>
 
@@ -280,7 +278,6 @@
                     android:layout_height="wrap_content"
                     android:text="Close"
                     android:textColor="@color/red"
-                    android:fontFamily="@font/montserrat_regular"
                     android:textSize="@dimen/mUserF"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
