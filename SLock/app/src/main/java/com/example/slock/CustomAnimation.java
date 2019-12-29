@@ -13,8 +13,9 @@ import android.widget.ImageView;
 
 public class CustomAnimation extends Dialog {
 
-    private Context c;
-    private ImageView img;
+    Context c;
+    ImageView img;
+
     public CustomAnimation(Context context) {
         super(context);
 

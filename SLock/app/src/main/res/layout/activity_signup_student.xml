@@ -84,10 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＊ Enter the Name"
-            android:textColor="@color/red"
-            android:fontFamily="@font/montserrat_light"
-            android:textSize="@dimen/warningF"
-            android:visibility="invisible" />
+            style="@style/WarnTextStyle" />
 
         <EditText
             android:id="@+id/sId"
@@ -118,10 +115,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＊ Enter the ID"
-            android:textColor="@color/red"
-            android:fontFamily="@font/montserrat_light"
-            android:textSize="@dimen/warningF"
-            android:visibility="invisible" />
+            style="@style/WarnTextStyle" />
+
+        <TextView
+            android:id="@+id/sOverlapId"
+            app:layout_constraintTop_toBottomOf="@id/sId"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/sPwd1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="＊ Cannot Use This ID"
+             style="@style/WarnTextStyle" />
 
         <EditText
             android:id="@+id/sPwd1"
@@ -163,10 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＊ Enter the Password"
-            android:textColor="@color/red"
-            android:fontFamily="@font/montserrat_light"
-            android:textSize="@dimen/warningF"
-            android:visibility="invisible" />
+            style="@style/WarnTextStyle" />
 
         <EditText
             android:id="@+id/sPwd2"
@@ -208,10 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＊ Enter the Confirm Password"
-            android:textColor="@color/red"
-            android:fontFamily="@font/montserrat_light"
-            android:textSize="@dimen/warningF"
-            android:visibility="invisible" />
+            style="@style/WarnTextStyle" />
 
         <EditText
             android:id="@+id/sStunum"
@@ -244,9 +242,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＊ Enter the Student Number"
-            android:textColor="@color/red"
-            android:fontFamily="@font/montserrat_light"
-            android:visibility="invisible" />
+            style="@style/WarnTextStyle" />
 
         <EditText
             android:id="@+id/sRoomnum"
@@ -279,10 +275,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="＊ Enter the Room Number"
-            android:textColor="@color/red"
-            android:fontFamily="@font/montserrat_light"
-            android:textSize="@dimen/warningF"
-            android:visibility="invisible" />
+            style="@style/WarnTextStyle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -7,6 +7,7 @@ import android.os.Vibrator;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,6 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.ref.SoftReference;
 import java.util.HashMap;
 
 public class SignInActivity extends AppCompatActivity {
@@ -50,6 +50,7 @@ public class SignInActivity extends AppCompatActivity {
     Boolean flag = true;
     CheckBox check;
     int posPwd;
+    CustomDialog customDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,18 +79,6 @@ public class SignInActivity extends AppCompatActivity {
         seeBtn = (ImageButton)findViewById(R.id.inPwdSee);
 
         check = (CheckBox)findViewById(R.id.checkbox);
-
-        inPwd.setOnEditorActionListener(new TextView.OnEditorActionListener() { // Password 입력 후 키보드의 완료 버튼을 누르면
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                switch(actionId) {
-                    case EditorInfo.IME_ACTION_DONE:
-                        continueBtn.callOnClick(); // 자동으로 continue 버튼을 눌러줌
-                        break;
-                }
-                return false;
-            }
-        });
 
         inId.addTextChangedListener(new TextWatcher() {
             @Override
@@ -122,15 +111,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        inId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
-                if(!hasFocus){ // 만약 포커스가 되어있지 않으면
-                    deleteIdBtn.setVisibility(View.GONE);
-                }
-            }
-        });
-
         inPwd.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -152,6 +132,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 posPwd = inPwd.getSelectionEnd(); // inputType이 바뀌면 자동으로 커서가 맨 앞으로 이동하기 때문에 현재 커서 위치를 저장해놓음
+//                Log.e("asdfasdf", posPwd);
 
                 if(inId.getText().toString().equals("") || inPwd.getText().toString().equals("")){
                     continueBtn.setBackgroundResource(R.drawable.button2_background);
@@ -164,12 +145,42 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+        inId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
+                if(!hasFocus){ // 만약 포커스가 되어있지 않으면
+                    deleteIdBtn.setVisibility(View.GONE);
+                }
+                else{
+                    if(!inId.getText().toString().equals("")){
+                        deleteIdBtn.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
         inPwd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     deletePwdBtn.setVisibility(View.GONE);
                 }
+                else{
+                    if(!inPwd.getText().toString().equals("")){
+                        deletePwdBtn.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
+
+        inPwd.setOnEditorActionListener(new TextView.OnEditorActionListener() { // Password 입력 후 키보드의 완료 버튼을 누르면
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch(actionId) {
+                    case EditorInfo.IME_ACTION_DONE:
+                        continueBtn.callOnClick(); // 자동으로 continue 버튼을 눌러줌
+                        break;
+                }
+                return false;
             }
         });
 
@@ -223,9 +234,6 @@ public class SignInActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
-                startActivity(intent2);
-
                 if(inId.getText().toString().equals("") || inPwd.getText().toString().equals("")){
                     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(200);
@@ -260,6 +268,8 @@ public class SignInActivity extends AppCompatActivity {
                                         String result = jsonObject.getString("level");
                                         String name = jsonObject.getString("name");
 
+                                        customAnimation.dismiss();
+
                                         if(result.equals("1")){
                                             String roomnumber =  jsonObject.getString("rnum");
 
@@ -271,8 +281,6 @@ public class SignInActivity extends AppCompatActivity {
                                             }
 
                                             ToastCustom(name +  " 학생님 환영합니다!");
-
-                                            customAnimation.dismiss();
 
                                             Intent intent1 = new Intent(getApplicationContext(), MainStudentActivity.class);
                                             startActivity(intent1);
@@ -286,15 +294,12 @@ public class SignInActivity extends AppCompatActivity {
 
                                             ToastCustom(name +  " 선생님 환영합니다!");
 
-                                            customAnimation.dismiss();
-
                                             Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
                                             startActivity(intent2);
                                         }
                                         else{
-                                            customAnimation.dismiss();
-
-                                            ToastCustom("아이디와 비밀번호가 일치하지 않습니다.");
+                                            customDialog = new CustomDialog(getApplicationContext(), "아이디 또는 비밀번호를 확인해주십시오.");
+                                            customDialog.show();
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -306,7 +311,8 @@ public class SignInActivity extends AppCompatActivity {
 
                             customAnimation.dismiss();
 
-//                        Toast.makeText(getApplicationContext(), "서버가 꺼져있습니다.", Toast.LENGTH_SHORT).show();
+                            customDialog = new CustomDialog(SignInActivity.this, "죄송합니다. 오류로 인하여 서버가 실행되지 않고 있습니다. 잠시 후 접속해주십시오.");
+                            customDialog.show();
                         }
                     }
                     );

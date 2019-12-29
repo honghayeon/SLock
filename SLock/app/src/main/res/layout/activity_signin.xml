@@ -104,10 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="＊ Enter the ID"
-                android:textColor="@color/red"
-                android:fontFamily="@font/montserrat_light"
-                android:textSize="@dimen/warningF"
-                android:visibility="invisible" />
+                style="@style/WarnTextStyle" />
 
             <EditText
                 android:id="@+id/inPwd"
@@ -149,10 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="＊ Enter the Password"
-                android:textColor="@color/red"
-                android:fontFamily="@font/montserrat_light"
-                android:textSize="@dimen/warningF"
-                android:visibility="invisible" />
+                style="@style/WarnTextStyle" />
 
             <CheckBox
                 android:id="@+id/checkbox"

@@ -190,7 +190,8 @@
         android:background="@drawable/button3_background"
         android:text="CONTINUE"
         android:textColor="@color/white"
-        style="@style/ContinueBtnStyle" />
+        style="@style/ContinueBtnStyle"
+        android:layout_marginBottom="@dimen/uBtnMB"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
