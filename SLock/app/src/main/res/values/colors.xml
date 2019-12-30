@@ -10,9 +10,8 @@
     <color name="graph">#46A8FB</color>
     <color name="graphLine">#F1F9FF</color>
     <color name="gray">#F1F0F2</color>
-    <color name="lightgray">#5CF1F0F2</color>
+    <color name="lightgray">#FCFCFC</color>
     <color name="navyGray">#78849E</color>
     <color name="green">#34C759</color>
     <color name="red">#FF0000</color>
-    <color name="dialogBack">#1A000000</color>
 </resources>

@@ -11,10 +11,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/dialog_ok"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:background="@drawable/content_background"
-        android:padding="50dp"
+        android:layout_width="@dimen/dContentW"
+        android:layout_height="@dimen/dContentH"
+        android:background="@drawable/dialog_content_background"
+        android:padding="@dimen/dContentP"
         app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
@@ -25,8 +25,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/black"/>
+            android:textSize="@dimen/dF"
+            android:textAlignment="center" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -36,10 +36,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dContentW"
+        android:layout_height="@dimen/dButtonH"
         android:text="확인"
-        android:textSize="18sp"
+        android:textSize="@dimen/dButtonF"
         android:background="@drawable/dialog_button_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

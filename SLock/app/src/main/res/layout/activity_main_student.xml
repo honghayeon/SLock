@@ -109,16 +109,12 @@
                 android:id="@+id/msText1"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/msContent1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="학생 현관문 요청 현황"
-                android:textSize="@dimen/mF"
-                android:textColor="@color/black"
-                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintVertical_weight="1"
-                android:layout_marginLeft="@dimen/mM"/>
+                style="@style/ContentTitleStyle" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/msContent1"
@@ -155,16 +151,12 @@
                 android:id="@+id/msText2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/msContent2"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="문 개방 요청"
-                android:textSize="@dimen/mF"
-                android:textColor="@color/black"
-                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintVertical_weight="1"
-                android:layout_marginLeft="@dimen/mM"/>
+                style="@style/ContentTitleStyle" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/msContent2"

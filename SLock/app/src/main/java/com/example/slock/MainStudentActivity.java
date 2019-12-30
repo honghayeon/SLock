@@ -26,8 +26,6 @@ public class MainStudentActivity extends AppCompatActivity {
     ImageButton myPage;
     Button logoutBtn, requsetBtn;
     TimePicker time1, time2;
-    String result;
-    ConstraintLayout loadingBackground;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +64,7 @@ public class MainStudentActivity extends AppCompatActivity {
 //            doorState.setTextColor(getResources().getColor(R.color.red));
 //        }
 
-        userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name"));
+        userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name") + ",");
 
         myPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +92,7 @@ public class MainStudentActivity extends AppCompatActivity {
         requsetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 요청 DB에 보내기
 
                 ToastCustom("요청 완료");
             }

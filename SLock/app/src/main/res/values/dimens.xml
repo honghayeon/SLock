@@ -39,15 +39,16 @@
     <dimen name="mUserF">16sp</dimen>
     <dimen name="mHopeF">20sp</dimen>
     <dimen name="mProfileI">60dp</dimen>
-    <dimen name="mLogoutF">11sp</dimen>
+    <dimen name="mLogoutF">12sp</dimen>
     <dimen name="mBigP">5dp</dimen>
     <dimen name="mF">16sp</dimen>
     <dimen name="mM">15dp</dimen>
     <dimen name="mTimeH">100dp</dimen>
     <dimen name="mLineM">50dp</dimen>
     <dimen name="mTextMR">5dp</dimen>
-    <dimen name="mTextMR2">20dp</dimen>
+    <dimen name="mTextMR2">15dp</dimen>
     <dimen name="mContentP">20dp</dimen>
+    <dimen name="mOpenF">14sp</dimen>
 
     <!-- MyPage -->
     <dimen name="myImage">105dp</dimen>
@@ -73,5 +74,13 @@
 
     <!-- Loading -->
     <dimen name="loadingI">40dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dContentW">300dp</dimen>
+    <dimen name="dContentH">130dp</dimen>
+    <dimen name="dContentP">35dp</dimen>
+    <dimen name="dButtonH">30dp</dimen>
+    <dimen name="dF">18sp</dimen>
+    <dimen name="dButtonF">16sp</dimen>
 
 </resources>

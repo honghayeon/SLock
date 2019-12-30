@@ -33,6 +33,7 @@
 
     <style name="TextViewStyle" parent="@android:style/Widget.DeviceDefault.TextView">
         <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="ButtonStyle" parent="@android:style/Widget.DeviceDefault.Button.Borderless">
@@ -84,6 +85,12 @@
         <item name="android:textSize">@dimen/warningF</item>
         <item name="android:fontFamily">@font/montserrat_light</item>
         <item name="android:visibility">invisible</item>
+    </style>
+
+    <style name="ContentTitleStyle">
+        <item name="android:textSize">@dimen/mF</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:layout_marginLeft">@dimen/mM</item>
     </style>
 
 </resources>

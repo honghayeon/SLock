@@ -387,7 +387,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
                 }
             }
         });
-
         sRoomnum.setOnEditorActionListener(new TextView.OnEditorActionListener() { // Password 입력 후 키보드의 완료 버튼을 누르면
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -537,19 +536,27 @@ public class SignUpStudentActivity extends AppCompatActivity {
                 }
                 else{
                     if(!sPwd1.getText().toString().equals(sPwd2.getText().toString())){
-                        customDialog = new CustomDialog(SignUpStudentActivity.this, "비밀번호가 일치하지않습니다.");
+                        customDialog = new CustomDialog(SignUpStudentActivity.this, "비밀번호를 확인해 주세요.");
                         customDialog.show();
 
                         return;
                     }
                     if(sStunum.getText().length() != 4){
-                        customDialog = new CustomDialog(SignUpStudentActivity.this, "학번은 4자리 숫자로 이루어져있습니다.");
+                        customDialog = new CustomDialog(SignUpStudentActivity.this, "학번은 4자리 숫자로 입력해 주세요.");
                         customDialog.show();
 
                         return;
                     }
                     if(sRoomnum.getText().length() != 3){
-                        customDialog = new CustomDialog(SignUpStudentActivity.this, "호실번호는 3자리 숫자로 이루어져있습니다.");
+                        customDialog = new CustomDialog(SignUpStudentActivity.this, "호실번호는 3자리 숫자로 입력해 주세요.");
+                        customDialog.show();
+
+                        return;
+                    }
+                    if(!((Integer.parseInt(sRoomnum.getText().toString()) >= 301 && Integer.parseInt(sRoomnum.getText().toString()) <= 320)
+                            ||  (Integer.parseInt(sRoomnum.getText().toString()) >= 401 && Integer.parseInt(sRoomnum.getText().toString()) <= 420)
+                            ||  (Integer.parseInt(sRoomnum.getText().toString()) >= 501 && Integer.parseInt(sRoomnum.getText().toString()) <= 520))){
+                        customDialog = new CustomDialog(SignUpStudentActivity.this, "호실은 3, 4, 5층 각 1호부터 20호 내로 입력해 주세요.");
                         customDialog.show();
 
                         return;
@@ -592,7 +599,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             customAnimation.dismiss();
 
-                            customDialog = new CustomDialog(SignUpStudentActivity.this, "죄송합니다. 오류로 인하여 서버가 실행되지 않고 있습니다. 잠시 후 접속해주십시오.");
+                            customDialog = new CustomDialog(SignUpStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
                             customDialog.show();
                         }
                     }

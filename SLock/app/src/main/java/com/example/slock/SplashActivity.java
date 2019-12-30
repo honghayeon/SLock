@@ -18,7 +18,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         if(SharedPreference.getAttributeBool(getApplicationContext(), "start")){ // 처음으로 앱을 실행한 것이 아니라면 startActivity가 실행되지 않음
-            if(SharedPreference.getAttribute(getApplicationContext(), "job").equals("")){
+            if(SharedPreference.getAttribute(getApplicationContext(), "id").equals("")){
                 Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
             }
@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(getApplicationContext(), MainStudentActivity.class);
                 startActivity(intent1);
             }
-            else{
+            else if((SharedPreference.getAttribute(getApplicationContext(), "job").equals("teacher"))){
                 Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
                 startActivity(intent2);
             }

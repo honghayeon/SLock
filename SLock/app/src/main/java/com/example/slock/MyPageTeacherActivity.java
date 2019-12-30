@@ -33,8 +33,8 @@ public class MyPageTeacherActivity extends AppCompatActivity {
         mytPwd1 = (EditText)findViewById(R.id.mytPwd1);
         mytPwd2 = (EditText)findViewById(R.id.mytPwd2);
 
-        // userName.setText();
-        // userJob.setText();
+        userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name"));
+        userJob.setText(SharedPreference.getAttribute(getApplicationContext(), "job"));
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

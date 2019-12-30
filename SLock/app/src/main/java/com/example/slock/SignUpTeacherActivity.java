@@ -461,13 +461,13 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                 }
                 else {
                     if (!tPwd1.getText().toString().equals(tPwd2.getText().toString())) {
-                        customDialog = new CustomDialog(SignUpTeacherActivity.this, "비밀번호가 일치하지않습니다.");
+                        customDialog = new CustomDialog(SignUpTeacherActivity.this, "비밀번호를 확인해 주세요.");
                         customDialog.show();
 
                         return;
                     }
                     if (tCertnum.getText().length() != 4) {
-                        customDialog = new CustomDialog(SignUpTeacherActivity.this, "인증번호는 4자리 숫자로 이루어져있습니다.");
+                        customDialog = new CustomDialog(SignUpTeacherActivity.this, "인증번호는 4자리 숫자로 입력해 주세요.");
                         customDialog.show();
 
                         return;
@@ -495,7 +495,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                                             startActivity(intent);
                                             finish();
                                         } else {
-                                            customDialog = new CustomDialog(SignUpTeacherActivity.this, "죄송합니다. 오류로 인하여 회원가입을 실패했습니다.");
+                                            customDialog = new CustomDialog(SignUpTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 시도해 주세요.");
                                             customDialog.show();
                                         }
                                     } catch (JSONException e) {
@@ -507,7 +507,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             customAnimation.dismiss();
 
-                            customDialog = new CustomDialog(SignUpTeacherActivity.this, "죄송합니다. 오류로 인하여 서버가 실행되지 않고 있습니다. 잠시 후 접속해주십시오.");
+                            customDialog = new CustomDialog(SignUpTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
                             customDialog.show();
                         }
                     });

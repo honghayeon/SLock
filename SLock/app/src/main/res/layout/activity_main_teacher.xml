@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"
             android:text="Hope school was\nfun today!"
             android:textSize="@dimen/mHopeF"
-            android:textColor="@color/black"
             android:fontFamily="@font/montserrat_bold"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,16 +106,12 @@
                 android:id="@+id/mtText1"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/mtContent1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:text="학생 현관문 요청 현황"
-                android:textSize="@dimen/mF"
-                android:textColor="@color/black"
-                android:fontFamily="@font/montserrat_bold"
                 app:layout_constraintVertical_weight="1"
-                android:layout_marginLeft="@dimen/mM"/>
+                style="@style/ContentTitleStyle" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mtContent1"
@@ -162,16 +157,39 @@
                     android:id="@+id/mtText2"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/mtContent2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:text="현관문 관리"
-                    android:textSize="@dimen/mF"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/montserrat_bold"
                     app:layout_constraintVertical_weight="1"
-                    android:layout_marginLeft="@dimen/mM"/>
+                    style="@style/ContentTitleStyle" />
+
+                <TextView
+                    android:id="@+id/mtOpen"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/mtOpenState"
+                    app:layout_constraintBottom_toTopOf="@+id/mtContent2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="현관문 상태"
+                    android:textSize="@dimen/mOpenF"
+                    android:fontFamily="@font/montserrat_regular"
+                    app:layout_constraintVertical_weight="1"
+                    android:layout_marginRight="@dimen/mM" />
+
+                <TextView
+                    android:id="@+id/mtOpenState"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/mtContent2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:text="Open"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/mOpenF"
+                    android:fontFamily="@font/montserrat_regular"
+                    app:layout_constraintVertical_weight="1"
+                    android:layout_marginRight="@dimen/mM" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/mtContent2"
@@ -241,7 +259,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="현관문"
+                        android:text="현관문 제어"
                         android:textColor="@color/navyGray"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"

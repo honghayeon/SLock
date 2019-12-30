@@ -34,8 +34,8 @@ public class MyPageStudentActivity extends AppCompatActivity {
         mytPwd1 = (EditText)findViewById(R.id.mysPwd1);
         mytPwd2 = (EditText)findViewById(R.id.mysPwd2);
 
-        // userName.setText();
-        // userJob.setText();
+        userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name"));
+        userJob.setText(SharedPreference.getAttribute(getApplicationContext(), "job"));
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -47,6 +47,7 @@
     <dimen name="mTextMR">10dp</dimen>
     <dimen name="mTextMR2">40dp</dimen>
     <dimen name="mContentP">40dp</dimen>
+    <dimen name="mOpenF">18sp</dimen>
 
     <!-- MyPage -->
     <dimen name="myImage">180dp</dimen>
@@ -72,5 +73,13 @@
 
     <!-- Loading -->
     <dimen name="loadingI">60dp</dimen>
+
+    <!-- Dialog -->
+    <dimen name="dContentW">450dp</dimen>
+    <dimen name="dContentH">200dp</dimen>
+    <dimen name="dContentP">50dp</dimen>
+    <dimen name="dButtonH">50dp</dimen>
+    <dimen name="dF">20sp</dimen>
+    <dimen name="dButtonF">18sp</dimen>
 
 </resources>

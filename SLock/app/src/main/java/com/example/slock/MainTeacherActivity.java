@@ -11,16 +11,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class MainTeacherActivity extends AppCompatActivity {
 
-    TextView userName;
+    TextView userName, openState;
     ImageButton myPage, logBtn, doorBtn;
     Button logoutBtn, reserveBtn;
     TimePicker time1, time2;
+    Switch doorSw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainTeacherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_teacher);
 
         userName = (TextView)findViewById(R.id.mtUser);
+        openState = (TextView)findViewById(R.id.mtOpenState);
 
         myPage = (ImageButton)findViewById(R.id.mtImage);
         logBtn = (ImageButton)findViewById(R.id.mtLogBtn);
@@ -39,11 +42,29 @@ public class MainTeacherActivity extends AppCompatActivity {
         time1 = (TimePicker)findViewById(R.id.mtTime1);
         time2 = (TimePicker)findViewById(R.id.mtTime2);
 
+        doorSw = (Switch)findViewById(R.id.mtDoorSw);
 
-        // DB 값 받아서 현관문 스위치 값 설정
-        // 스위치 바뀌면 DB 값도 변경
+        // openState 계속 받아오기
 
-        userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name"));
+        // DB 상태 불러오기
+        if("받는 값".equals("1")){
+            doorSw.setChecked(true);
+        }
+        else{
+            doorSw.setChecked(false);
+        }
+
+
+        if(doorSw.isChecked()){
+            // 1 보내기
+        }
+        else{
+            // 문이 열려있는지 확인, 열려있으면 못 잠금(경고)
+
+            // 0 보내기
+        }
+
+        userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name") + ",");
 
         myPage.setOnClickListener(new View.OnClickListener() {
             @Override

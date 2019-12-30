@@ -262,11 +262,12 @@ public class SignInActivity extends AppCompatActivity {
                                         if(result.equals("1")){
                                             String roomnumber =  jsonObject.getString("rnum");
 
+                                            SharedPreference.setAttribute(getApplicationContext(), "job", "student");
+                                            SharedPreference.setAttribute(getApplicationContext(), "name", name);
+                                            SharedPreference.setAttribute(getApplicationContext(), "roomnumber", roomnumber);
+
                                             if(check.isChecked()){
-                                                SharedPreference.setAttribute(getApplicationContext(), "job", "student");
                                                 SharedPreference.setAttribute(getApplicationContext(), "id", inId.getText().toString());
-                                                SharedPreference.setAttribute(getApplicationContext(), "name", name);
-                                                SharedPreference.setAttribute(getApplicationContext(), "roomnumber", roomnumber);
                                             }
 
                                             ToastCustom(name +  " 학생님 환영합니다!");
@@ -275,10 +276,11 @@ public class SignInActivity extends AppCompatActivity {
                                             startActivity(intent1);
                                         }
                                         else if(result.equals("2")){
+                                            SharedPreference.setAttribute(getApplicationContext(), "job", "teacher");
+                                            SharedPreference.setAttribute(getApplicationContext(), "name", name);
+
                                             if(check.isChecked()){
-                                                SharedPreference.setAttribute(getApplicationContext(), "job", "teacher");
                                                 SharedPreference.setAttribute(getApplicationContext(), "id", inId.getText().toString());
-                                                SharedPreference.setAttribute(getApplicationContext(), "name", name);
                                             }
 
                                             ToastCustom(name +  " 선생님 환영합니다!");
@@ -287,7 +289,7 @@ public class SignInActivity extends AppCompatActivity {
                                             startActivity(intent2);
                                         }
                                         else{
-                                            customDialog = new CustomDialog(getApplicationContext(), "아이디 또는 비밀번호를 확인해주십시오.");
+                                            customDialog = new CustomDialog(getApplicationContext(), "일치하는 회원 정보가 없습니다.\n아이디 비밀번호를 확인해 주세요.");
                                             customDialog.show();
                                         }
                                     } catch (JSONException e) {
@@ -300,7 +302,7 @@ public class SignInActivity extends AppCompatActivity {
 
                             customAnimation.dismiss();
 
-                            customDialog = new CustomDialog(SignInActivity.this, "죄송합니다. 오류로 인하여 서버가 실행되지 않고 있습니다. 잠시 후 접속해주십시오.");
+                            customDialog = new CustomDialog(SignInActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
                             customDialog.show();
                         }
                     }
