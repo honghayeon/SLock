@@ -49,7 +49,6 @@ public class SignInActivity extends AppCompatActivity {
     ImageButton deleteIdBtn, deletePwdBtn, seeBtn;
     Boolean flag = true;
     CheckBox check;
-    int posPwd;
     CustomDialog customDialog;
 
     @Override
@@ -131,9 +130,6 @@ public class SignInActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                posPwd = inPwd.getSelectionEnd(); // inputType이 바뀌면 자동으로 커서가 맨 앞으로 이동하기 때문에 현재 커서 위치를 저장해놓음
-//                Log.e("asdfasdf", posPwd);
-
                 if(inId.getText().toString().equals("") || inPwd.getText().toString().equals("")){
                     continueBtn.setBackgroundResource(R.drawable.button2_background);
                     continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
@@ -171,7 +167,6 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-
         inPwd.setOnEditorActionListener(new TextView.OnEditorActionListener() { // Password 입력 후 키보드의 완료 버튼을 누르면
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -204,22 +199,16 @@ public class SignInActivity extends AppCompatActivity {
                     seeBtn.setImageResource(R.drawable.eye_open);
                     inPwd.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
-                    if (posPwd >= 0) {
-                        inPwd.setSelection(posPwd);
-                    }
-
                     flag = false;
                 }
                 else{
                     seeBtn.setImageResource(R.drawable.eye_close);
-                    inPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-                    if (posPwd >= 0) {
-                        inPwd.setSelection(posPwd);
-                    }
+                    inPwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
                     flag = true;
                 }
+                inPwd.setSelection(inPwd.length());
             }
         });
 

@@ -50,7 +50,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
     InputMethodManager imm;
     ImageButton deleteNameBtn, deleteIdBtn, deletePwd1Btn, deletePwd2Btn, deleteStunumBtn, deleteRoomnumBtn, see1Btn, see2Btn;
     Boolean flag1 = true, flag2 = true;
-    int posPwd1, posPwd2;
     CustomDialog customDialog;
 
     @Override
@@ -206,8 +205,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                posPwd1 = sPwd1.getSelectionEnd(); // inputType이 바뀌면 자동으로 커서가 맨 앞으로 이동하기 때문에 현재 커서 위치를 저장해놓음
-
                 if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
                     continueBtn.setBackgroundResource(R.drawable.button2_background);
                     continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
@@ -239,8 +236,6 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                posPwd2 = sPwd2.getSelectionEnd(); // inputType이 바뀌면 자동으로 커서가 맨 앞으로 이동하기 때문에 현재 커서 위치를 저장해놓음
-
                 if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
                     continueBtn.setBackgroundResource(R.drawable.button2_background);
                     continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
@@ -449,22 +444,15 @@ public class SignUpStudentActivity extends AppCompatActivity {
                     see1Btn.setImageResource(R.drawable.eye_open);
                     sPwd1.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
-                    if (posPwd1 >= 0) {
-                        sPwd1.setSelection(posPwd1);
-                    }
-
                     flag1 = false;
                 }
                 else{
                     see1Btn.setImageResource(R.drawable.eye_close);
                     sPwd1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-                    if (posPwd1 >= 0) {
-                        sPwd1.setSelection(posPwd1);
-                    }
-
                     flag1 = true;
                 }
+                sPwd1.setSelection(sPwd1.length());
             }
         });
 
@@ -475,22 +463,15 @@ public class SignUpStudentActivity extends AppCompatActivity {
                     see2Btn.setImageResource(R.drawable.eye_open);
                     sPwd2.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
-                    if (posPwd2 >= 0) {
-                        sPwd2.setSelection(posPwd2);
-                    }
-
                     flag2 = false;
                 }
                 else{
                     see2Btn.setImageResource(R.drawable.eye_close);
                     sPwd2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-                    if (posPwd2 >= 0) {
-                        sPwd2.setSelection(posPwd2);
-                    }
-
                     flag2 = true;
                 }
+                sPwd2.setSelection(sPwd2.length());
             }
         });
 
