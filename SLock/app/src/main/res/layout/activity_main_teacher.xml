@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -43,6 +42,7 @@
             android:fontFamily="@font/montserrat_bold"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mtImageLayout"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,9 +109,34 @@
                 app:layout_constraintBottom_toTopOf="@+id/mtContent1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="학생 현관문 요청 현황"
+                android:text="실시간 현관문 요청 현황"
                 app:layout_constraintVertical_weight="1"
                 style="@style/ContentTitleStyle" />
+
+            <TextView
+                android:id="@+id/mtText6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/mtOpenTime"
+                app:layout_constraintBottom_toTopOf="@+id/mtContent1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오픈 시간"
+                android:textSize="@dimen/mOpenF"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginRight="@dimen/mM" />
+
+            <TextView
+                android:id="@+id/mtOpenTime"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/mtContent1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="미정"
+                android:textColor="@color/navyGray"
+                android:textSize="@dimen/mOpenF"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginRight="@dimen/MRL" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mtContent1"
@@ -126,7 +151,13 @@
                 app:layout_constraintVertical_weight="8"
                 android:layout_marginLeft="@dimen/mM"
                 android:layout_marginRight="@dimen/mM"
-                android:layout_marginBottom="@dimen/mM">
+                android:layout_marginBottom="@dimen/mM"
+                android:padding="@dimen/mContentP" >
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/mtChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,11 +201,10 @@
                     app:layout_constraintRight_toLeftOf="@id/mtOpenState"
                     app:layout_constraintBottom_toTopOf="@+id/mtContent2"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:text="현관문 상태"
                     android:textSize="@dimen/mOpenF"
                     android:fontFamily="@font/montserrat_regular"
-                    app:layout_constraintVertical_weight="1"
                     android:layout_marginRight="@dimen/mM" />
 
                 <TextView
@@ -183,13 +213,12 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/mtContent2"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     android:text="Open"
                     android:textColor="@color/green"
                     android:textSize="@dimen/mOpenF"
                     android:fontFamily="@font/montserrat_regular"
-                    app:layout_constraintVertical_weight="1"
-                    android:layout_marginRight="@dimen/mM" />
+                    android:layout_marginRight="@dimen/MRL" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/mtContent2"
@@ -209,28 +238,18 @@
                     android:layout_marginBottom="@dimen/mM">
 
                     <TimePicker
-                        android:id="@+id/mtTime1"
+                        android:id="@+id/mtTime"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@id/mtTime2"
-                        app:layout_constraintBottom_toTopOf="@+id/mtReserBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/mTimeH"
-                        android:timePickerMode="spinner"/>
-
-                    <TimePicker
-                        android:id="@+id/mtTime2"
-                        app:layout_constraintBottom_toTopOf="@+id/mtReserBtn"
-                        app:layout_constraintLeft_toRightOf="@id/mtTime1"
                         app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/mtReserBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/mTimeH"
                         android:timePickerMode="spinner"/>
 
                     <Button
                         android:id="@+id/mtReserBtn"
-                        app:layout_constraintTop_toBottomOf="@+id/mtTime1"
+                        app:layout_constraintTop_toBottomOf="@+id/mtTime"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintBottom_toTopOf="@+id/mtLine"
@@ -259,7 +278,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="현관문 제어"
+                        android:text="현관문"
                         android:textColor="@color/navyGray"
                         android:textSize="@dimen/mUserF"
                         android:layout_marginRight="@dimen/mTextMR"

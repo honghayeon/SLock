@@ -3,7 +3,7 @@
     <dimen name="btnW">120dp</dimen>
     <dimen name="btnH">50dp</dimen>
     <dimen name="btnF">17sp</dimen>
-    <dimen name="cornerI">85dp</dimen>
+    <dimen name="cornerI">60dp</dimen>
     <dimen name="editF">18sp</dimen>
     <dimen name="imageBtnWH">30dp</dimen>
     <dimen name="deleteBtnMR">10dp</dimen>
@@ -63,6 +63,11 @@
 
     <!-- Log -->
     <dimen name="lReM">30dp</dimen>
+    <dimen name="lH">80dp</dimen>
+    <dimen name="lImageWH">50dp</dimen>
+    <dimen name="lMRL">20dp</dimen>
+    <dimen name="lStateF">18sp</dimen>
+    <dimen name="lTimeF">16sp</dimen>
 
     <!-- Frag -->
     <dimen name="fH">50dp</dimen>

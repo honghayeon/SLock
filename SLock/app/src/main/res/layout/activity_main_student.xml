@@ -112,9 +112,34 @@
                 app:layout_constraintBottom_toTopOf="@+id/msContent1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:text="학생 현관문 요청 현황"
+                android:text="실시간 현관문 요청 현황"
                 app:layout_constraintVertical_weight="1"
                 style="@style/ContentTitleStyle" />
+
+            <TextView
+                android:id="@+id/msText6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/msOpenTime"
+                app:layout_constraintBottom_toTopOf="@+id/msContent1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오픈 시간"
+                android:textSize="@dimen/mOpenF"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginRight="@dimen/mM" />
+
+            <TextView
+                android:id="@+id/msOpenTime"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/msContent1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="미정"
+                android:textColor="@color/navyGray"
+                android:textSize="@dimen/mOpenF"
+                android:fontFamily="@font/montserrat_regular"
+                android:layout_marginRight="@dimen/MRL" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/msContent1"
@@ -129,7 +154,13 @@
                 app:layout_constraintVertical_weight="8"
                 android:layout_marginLeft="@dimen/mM"
                 android:layout_marginRight="@dimen/mM"
-                android:layout_marginBottom="@dimen/mM">
+                android:layout_marginBottom="@dimen/mM"
+                android:padding="@dimen/mContentP" >
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/msChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -176,28 +207,18 @@
                 android:layout_marginBottom="@dimen/mM">
 
                 <TimePicker
-                    android:id="@+id/msTime1"
+                    android:id="@+id/msTime"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@id/msTime2"
+                    app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/msRequBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/mTimeH"
                     android:timePickerMode="spinner"/>
 
-                <TimePicker
-                    android:id="@+id/msTime2"
-                    android:layout_width="248dp"
-                    android:layout_height="109dp"
-                    android:timePickerMode="spinner"
-                    app:layout_constraintBottom_toTopOf="@+id/msRequBtn"
-                    app:layout_constraintLeft_toRightOf="@id/msTime1"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <Button
                     android:id="@+id/msRequBtn"
-                    app:layout_constraintTop_toBottomOf="@+id/msTime1"
+                    app:layout_constraintTop_toBottomOf="@+id/msTime"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/msLine"

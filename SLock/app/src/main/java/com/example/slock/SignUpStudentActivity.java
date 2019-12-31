@@ -40,7 +40,7 @@ import java.util.HashMap;
 public class SignUpStudentActivity extends AppCompatActivity {
 
     Button signinBtn, signupBtn, continueBtn;
-    EditText sName, sId, sPwd1, sPwd2, sStunum, sRoomnum; // 회원가입할 학생 이름, 아이디, 학번, 방번호
+    EditText Name, Id, Pwd1, Pwd2, Stunum, Roomnum; // 회원가입할 학생 이름, 아이디, 학번, 방번호
     Intent intent;
     String url = "http://10.120.74.188:8080/signup";
     ImageView loadingImage;
@@ -57,7 +57,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_student);
 
-        final RequestQueue queue = Volley.newRequestQueue(SignUpStudentActivity.this);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
         loadingImage = (ImageView)findViewById(R.id.loadingImage);
 
@@ -67,12 +67,12 @@ public class SignUpStudentActivity extends AppCompatActivity {
         signupBtn = (Button)findViewById(R.id.sSignupBtn);
         continueBtn = (Button)findViewById(R.id.sContinueBtn);
 
-        sName = (EditText)findViewById(R.id.sName);
-        sId = (EditText)findViewById(R.id.sId);
-        sPwd1 = (EditText)findViewById(R.id.sPwd1);
-        sPwd2 = (EditText)findViewById(R.id.sPwd2);
-        sStunum = (EditText) findViewById(R.id.sStunum);
-        sRoomnum = (EditText) findViewById(R.id.sRoomnum);
+        Name = (EditText)findViewById(R.id.sName);
+        Id = (EditText)findViewById(R.id.sId);
+        Pwd1 = (EditText)findViewById(R.id.sPwd1);
+        Pwd2 = (EditText)findViewById(R.id.sPwd2);
+        Stunum = (EditText) findViewById(R.id.sStunum);
+        Roomnum = (EditText) findViewById(R.id.sRoomnum);
 
         warnName = (TextView)findViewById(R.id.sWarnName);
         warnId = (TextView)findViewById(R.id.sWarnId);
@@ -93,7 +93,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
         see1Btn = (ImageButton)findViewById(R.id.sPwd1See);
         see2Btn = (ImageButton)findViewById(R.id.sPwd2See);
 
-        sName.addTextChangedListener(new TextWatcher() {
+        Name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnName.setVisibility(View.INVISIBLE);
@@ -103,7 +103,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnName.setVisibility(View.INVISIBLE);
 
-                if(!sName.getText().toString().equals("")){
+                if(!Name.getText().toString().equals("")){
                     deleteNameBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -113,18 +113,11 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        sId.addTextChangedListener(new TextWatcher() {
+        Id.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnId.setVisibility(View.INVISIBLE);
@@ -134,7 +127,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnId.setVisibility(View.INVISIBLE);
 
-                if(!sId.getText().toString().equals("")){
+                if(!Id.getText().toString().equals("")){
                     deleteIdBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -143,7 +136,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
                 // 아이디 중복 체크
                 HashMap<String, String> data = new HashMap<>();
-                data.put("id", sId.getText().toString());
+                data.put("id", Id.getText().toString());
                 // Request a string response from the provided URL
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/idduplicate", new JSONObject(data),
                         new Response.Listener<JSONObject>() {
@@ -174,18 +167,10 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
-
-        sPwd1.addTextChangedListener(new TextWatcher() {
+        Pwd1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnPwd1.setVisibility(View.INVISIBLE);
@@ -195,7 +180,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnPwd1.setVisibility(View.INVISIBLE);
 
-                if(!sPwd1.getText().toString().equals("")){
+                if(!Pwd1.getText().toString().equals("")){
                     deletePwd1Btn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -205,18 +190,11 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        sPwd2.addTextChangedListener(new TextWatcher() {
+        Pwd2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnPwd2.setVisibility(View.INVISIBLE);
@@ -226,7 +204,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnPwd2.setVisibility(View.INVISIBLE);
 
-                if(!sPwd2.getText().toString().equals("")){
+                if(!Pwd2.getText().toString().equals("")){
                     deletePwd2Btn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -236,18 +214,11 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        sStunum.addTextChangedListener(new TextWatcher() {
+        Stunum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnStunum.setVisibility(View.INVISIBLE);
@@ -257,7 +228,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnStunum.setVisibility(View.INVISIBLE);
 
-                if(!sStunum.getText().toString().equals("")){
+                if(!Stunum.getText().toString().equals("")){
                     deleteStunumBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -267,18 +238,11 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        sRoomnum.addTextChangedListener(new TextWatcher() {
+        Roomnum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnRoomnum.setVisibility(View.INVISIBLE);
@@ -288,7 +252,7 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnRoomnum.setVisibility(View.INVISIBLE);
 
-                if(!sRoomnum.getText().toString().equals("")){
+                if(!Roomnum.getText().toString().equals("")){
                     deleteRoomnumBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -298,96 +262,89 @@ public class SignUpStudentActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        sName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteNameBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!sName.getText().toString().equals("")){
+                    if(!Name.getText().toString().equals("")){
                         deleteNameBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        sId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Id.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteIdBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!sId.getText().toString().equals("")){
+                    if(!Id.getText().toString().equals("")){
                         deleteIdBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        sPwd1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Pwd1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deletePwd1Btn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!sPwd1.getText().toString().equals("")){
+                    if(!Pwd1.getText().toString().equals("")){
                         deletePwd1Btn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        sPwd2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Pwd2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deletePwd2Btn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!sPwd2.getText().toString().equals("")){
+                    if(!Pwd2.getText().toString().equals("")){
                         deletePwd2Btn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        sStunum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Stunum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteStunumBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!sStunum.getText().toString().equals("")){
+                    if(!Stunum.getText().toString().equals("")){
                         deleteStunumBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        sRoomnum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Roomnum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteRoomnumBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!sRoomnum.getText().toString().equals("")){
+                    if(!Roomnum.getText().toString().equals("")){
                         deleteRoomnumBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        sRoomnum.setOnEditorActionListener(new TextView.OnEditorActionListener() { // Password 입력 후 키보드의 완료 버튼을 누르면
+        Roomnum.setOnEditorActionListener(new TextView.OnEditorActionListener() { // Password 입력 후 키보드의 완료 버튼을 누르면
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch(actionId) {
@@ -402,37 +359,37 @@ public class SignUpStudentActivity extends AppCompatActivity {
         deleteNameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sName.setText("");
+                Name.setText("");
             }
         });
         deleteIdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sId.setText("");
+                Id.setText("");
             }
         });
         deletePwd1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sPwd1.setText("");
+                Pwd1.setText("");
             }
         });
         deletePwd2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sPwd2.setText("");
+                Pwd2.setText("");
             }
         });
         deleteStunumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sStunum.setText("");
+                Stunum.setText("");
             }
         });
         deleteRoomnumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sRoomnum.setText("");
+                Roomnum.setText("");
             }
         });
 
@@ -441,36 +398,35 @@ public class SignUpStudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(flag1 == true){
                     see1Btn.setImageResource(R.drawable.eye_open);
-                    sPwd1.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    Pwd1.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
                     flag1 = false;
                 }
                 else{
                     see1Btn.setImageResource(R.drawable.eye_close);
-                    sPwd1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    Pwd1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
                     flag1 = true;
                 }
-                sPwd1.setSelection(sPwd1.length());
+                Pwd1.setSelection(Pwd1.length());
             }
         });
-
         see2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(flag2 == true){
                     see2Btn.setImageResource(R.drawable.eye_open);
-                    sPwd2.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    Pwd2.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
                     flag2 = false;
                 }
                 else{
                     see2Btn.setImageResource(R.drawable.eye_close);
-                    sPwd2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    Pwd2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
                     flag2 = true;
                 }
-                sPwd2.setSelection(sPwd2.length());
+                Pwd2.setSelection(Pwd2.length());
             }
         });
 
@@ -493,69 +449,69 @@ public class SignUpStudentActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(sName.getText().toString().equals("") || sId.getText().toString().equals("") || sPwd1.getText().toString().equals("") || sPwd2.getText().toString().equals("") || sStunum.getText().toString().equals("") || sRoomnum.getText().toString().equals("")){
+                if(Name.getText().toString().equals("") || Id.getText().toString().equals("") || Pwd1.getText().toString().equals("") || Pwd2.getText().toString().equals("") || Stunum.getText().toString().equals("") || Roomnum.getText().toString().equals("")){
                     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(200);
 
-                    if(sRoomnum.getText().toString().equals("")) {
+                    if(Roomnum.getText().toString().equals("")) {
                         warnRoomnum.setVisibility(View.VISIBLE);
 
-                        sRoomnum.requestFocus();
-                        imm.showSoftInput(sRoomnum, 0);
+                        Roomnum.requestFocus();
+                        imm.showSoftInput(Roomnum, 0);
                     }
-                    if (sStunum.getText().toString().equals("")) {
+                    if (Stunum.getText().toString().equals("")) {
                         warnStunum.setVisibility(View.VISIBLE);
 
-                        sStunum.requestFocus();
-                        imm.showSoftInput(sStunum, 0);
+                        Stunum.requestFocus();
+                        imm.showSoftInput(Stunum, 0);
                     }
-                    if (sPwd2.getText().toString().equals("")) {
+                    if (Pwd2.getText().toString().equals("")) {
                         warnPwd2.setVisibility(View.VISIBLE);
 
-                        sPwd2.requestFocus();
-                        imm.showSoftInput(sPwd2, 0);
+                        Pwd2.requestFocus();
+                        imm.showSoftInput(Pwd2, 0);
                     }
-                    if (sPwd1.getText().toString().equals("")) {
+                    if (Pwd1.getText().toString().equals("")) {
                         warnPwd1.setVisibility(View.VISIBLE);
 
-                        sPwd1.requestFocus();
-                        imm.showSoftInput(sPwd1, 0);
+                        Pwd1.requestFocus();
+                        imm.showSoftInput(Pwd1, 0);
                     }
-                    if (sId.getText().toString().equals("")) {
+                    if (Id.getText().toString().equals("")) {
                         warnId.setVisibility(View.VISIBLE);
 
-                        sId.requestFocus();
-                        imm.showSoftInput(sId, 0);
+                        Id.requestFocus();
+                        imm.showSoftInput(Id, 0);
                     }
-                    if (sName.getText().toString().equals("")) {
+                    if (Name.getText().toString().equals("")) {
                         warnName.setVisibility(View.VISIBLE);
 
-                        sName.requestFocus();
-                        imm.showSoftInput(sName, 0);
+                        Name.requestFocus();
+                        imm.showSoftInput(Name, 0);
                     }
                 }
                 else{
-                    if(!sPwd1.getText().toString().equals(sPwd2.getText().toString())){
+                    if(!Pwd1.getText().toString().equals(Pwd2.getText().toString())){
                         customDialog = new CustomDialog(SignUpStudentActivity.this, "비밀번호를 확인해 주세요.");
                         customDialog.show();
 
                         return;
                     }
-                    if(sStunum.getText().length() != 4){
+                    if(Stunum.getText().length() != 4){
                         customDialog = new CustomDialog(SignUpStudentActivity.this, "학번은 4자리 숫자로 입력해 주세요.");
                         customDialog.show();
 
                         return;
                     }
-                    if(sRoomnum.getText().length() != 3){
+                    if(Roomnum.getText().length() != 3){
                         customDialog = new CustomDialog(SignUpStudentActivity.this, "호실번호는 3자리 숫자로 입력해 주세요.");
                         customDialog.show();
 
                         return;
                     }
-                    if(!((Integer.parseInt(sRoomnum.getText().toString()) >= 301 && Integer.parseInt(sRoomnum.getText().toString()) <= 320)
-                            ||  (Integer.parseInt(sRoomnum.getText().toString()) >= 401 && Integer.parseInt(sRoomnum.getText().toString()) <= 420)
-                            ||  (Integer.parseInt(sRoomnum.getText().toString()) >= 501 && Integer.parseInt(sRoomnum.getText().toString()) <= 520))){
+                    if(!((Integer.parseInt(Roomnum.getText().toString()) >= 301 && Integer.parseInt(Roomnum.getText().toString()) <= 320)
+                            ||  (Integer.parseInt(Roomnum.getText().toString()) >= 401 && Integer.parseInt(Roomnum.getText().toString()) <= 420)
+                            ||  (Integer.parseInt(Roomnum.getText().toString()) >= 501 && Integer.parseInt(Roomnum.getText().toString()) <= 520))){
                         customDialog = new CustomDialog(SignUpStudentActivity.this, "호실은 3, 4, 5층 각 1호부터 20호 내로 입력해 주세요.");
                         customDialog.show();
 
@@ -565,12 +521,12 @@ public class SignUpStudentActivity extends AppCompatActivity {
                     customAnimation.show();
 
                     HashMap<String, String> data = new HashMap<>();
-                    data.put("name", sName.getText().toString());
-                    data.put("id", sId.getText().toString());
-                    data.put("pw", sPwd1.getText().toString());
+                    data.put("name", Name.getText().toString());
+                    data.put("id", Id.getText().toString());
+                    data.put("pw", Pwd1.getText().toString());
                     data.put("level","1");
-                    data.put("num", sStunum.getText().toString());
-                    data.put("rnum", sRoomnum.getText().toString());
+                    data.put("num", Stunum.getText().toString());
+                    data.put("rnum", Roomnum.getText().toString());
                     // Request a string response from the provided URL
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
                             new Response.Listener<JSONObject>() {
@@ -609,5 +565,16 @@ public class SignUpStudentActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void buttonBackgournd() {
+        if(Name.getText().toString().equals("") || Id.getText().toString().equals("") || Pwd1.getText().toString().equals("") || Pwd2.getText().toString().equals("") || Stunum.getText().toString().equals("") || Roomnum.getText().toString().equals("")){
+            continueBtn.setBackgroundResource(R.drawable.button2_background);
+            continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
+        }
+        else{
+            continueBtn.setBackgroundResource(R.drawable.button_background);
+            continueBtn.setTextColor(getResources().getColor(R.color.white));
+        }
     }
 }

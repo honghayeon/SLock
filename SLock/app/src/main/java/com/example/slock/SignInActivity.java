@@ -56,7 +56,7 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        final RequestQueue queue = Volley.newRequestQueue(SignInActivity.this);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
         signupBtn = (Button)findViewById(R.id.inSignupBtn);
         continueBtn = (Button)findViewById(R.id.inContinueBtn);
@@ -223,6 +223,9 @@ public class SignInActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
+                startActivity(intent2);
+
                 if(inId.getText().toString().equals("") || inPwd.getText().toString().equals("")){
                     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(200);
@@ -252,12 +255,12 @@ public class SignInActivity extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
+                                    customAnimation.dismiss();
+
                                     try {
                                         JSONObject jsonObject = new JSONObject(response.toString());
                                         String result = jsonObject.getString("level");
                                         String name = jsonObject.getString("name");
-
-                                        customAnimation.dismiss();
 
                                         if(result.equals("1")){
                                             String roomnumber =  jsonObject.getString("rnum");
@@ -265,28 +268,30 @@ public class SignInActivity extends AppCompatActivity {
                                             SharedPreference.setAttribute(getApplicationContext(), "job", "student");
                                             SharedPreference.setAttribute(getApplicationContext(), "name", name);
                                             SharedPreference.setAttribute(getApplicationContext(), "roomnumber", roomnumber);
+                                            SharedPreference.setAttribute(getApplicationContext(), "id", inId.getText().toString());
 
                                             if(check.isChecked()){
-                                                SharedPreference.setAttribute(getApplicationContext(), "id", inId.getText().toString());
+                                                SharedPreference.setAttribute(getApplicationContext(), "remember", "ok");
                                             }
-
-                                            ToastCustom(name +  " 학생님 환영합니다!");
 
                                             Intent intent1 = new Intent(getApplicationContext(), MainStudentActivity.class);
                                             startActivity(intent1);
+
+                                            finish();
                                         }
                                         else if(result.equals("2")){
                                             SharedPreference.setAttribute(getApplicationContext(), "job", "teacher");
                                             SharedPreference.setAttribute(getApplicationContext(), "name", name);
+                                            SharedPreference.setAttribute(getApplicationContext(), "id", inId.getText().toString());
 
                                             if(check.isChecked()){
-                                                SharedPreference.setAttribute(getApplicationContext(), "id", inId.getText().toString());
+                                                SharedPreference.setAttribute(getApplicationContext(), "remember", "ok");
                                             }
-
-                                            ToastCustom(name +  " 선생님 환영합니다!");
 
                                             Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
                                             startActivity(intent2);
+
+                                            finish();
                                         }
                                         else{
                                             customDialog = new CustomDialog(getApplicationContext(), "일치하는 회원 정보가 없습니다.\n아이디 비밀번호를 확인해 주세요.");
@@ -299,7 +304,6 @@ public class SignInActivity extends AppCompatActivity {
                             }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-
                             customAnimation.dismiss();
 
                             customDialog = new CustomDialog(SignInActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");

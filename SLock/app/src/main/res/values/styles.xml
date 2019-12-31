@@ -93,4 +93,10 @@
         <item name="android:layout_marginLeft">@dimen/mM</item>
     </style>
 
+    <style name="MyPageEditStyle">
+        <item name="android:layout_marginLeft">@dimen/myMRL</item>
+        <item name="android:layout_marginRight">@dimen/myMRL</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
 </resources>

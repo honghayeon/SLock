@@ -84,8 +84,27 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="Room Number"
-            android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"/>
+            style="@style/MyPageEditStyle" />
+
+        <ImageButton
+            android:id="@+id/mysNowPwdDel"
+            app:layout_constraintTop_toTopOf="@id/mysNowPwd"
+            app:layout_constraintRight_toLeftOf="@id/mysNowPwdSee"
+            app:layout_constraintBottom_toBottomOf="@id/mysNowPwd"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:layout_marginRight="@dimen/deleteBtnMR"
+            android:src="@drawable/delete"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/mysNowPwdSee"
+            app:layout_constraintTop_toTopOf="@id/mysNowPwd"
+            app:layout_constraintRight_toRightOf="@id/mysNowPwd"
+            app:layout_constraintBottom_toBottomOf="@id/mysNowPwd"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:src="@drawable/eye_close" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -122,8 +141,19 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="Room Number"
-            android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"/>
+            style="@style/MyPageEditStyle"
+            android:inputType="number"
+            android:maxLength="3" />
+
+        <ImageButton
+            android:id="@+id/mysRoomnumDel"
+            app:layout_constraintTop_toTopOf="@id/mysRoom"
+            app:layout_constraintRight_toRightOf="@id/mysRoom"
+            app:layout_constraintBottom_toBottomOf="@id/mysRoom"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:src="@drawable/delete"
+            android:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,9 +190,27 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="New Password"
-            android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"
-            android:inputType="textPassword"/>
+            style="@style/MyPageEditStyle" />
+
+        <ImageButton
+            android:id="@+id/mysPwd1Del"
+            app:layout_constraintTop_toTopOf="@+id/mysPwd1"
+            app:layout_constraintRight_toLeftOf="@id/mysPwd1See"
+            app:layout_constraintBottom_toBottomOf="@id/mysPwd1"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:layout_marginRight="@dimen/deleteBtnMR"
+            android:src="@drawable/delete"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/mysPwd1See"
+            app:layout_constraintTop_toTopOf="@id/mysPwd1"
+            app:layout_constraintRight_toRightOf="@id/mysPwd1"
+            app:layout_constraintBottom_toBottomOf="@id/mysPwd1"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:src="@drawable/eye_close" />
 
         <EditText
             android:id="@+id/mysPwd2"
@@ -174,9 +222,27 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/iEditF"
             android:hint="Confirm New Password"
-            android:layout_marginLeft="@dimen/myMRL"
-            android:layout_marginRight="@dimen/myMRL"
-            android:inputType="textPassword"/>
+            style="@style/MyPageEditStyle" />
+
+        <ImageButton
+            android:id="@+id/mysPwd2Del"
+            app:layout_constraintTop_toTopOf="@+id/mysPwd2"
+            app:layout_constraintRight_toLeftOf="@id/mysPwd2See"
+            app:layout_constraintBottom_toBottomOf="@id/mysPwd2"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:layout_marginRight="@dimen/deleteBtnMR"
+            android:src="@drawable/delete"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/mysPwd2See"
+            app:layout_constraintTop_toTopOf="@id/mysPwd2"
+            app:layout_constraintRight_toRightOf="@id/mysPwd2"
+            app:layout_constraintBottom_toBottomOf="@id/mysPwd2"
+            android:layout_width="@dimen/deleteBtnWH"
+            android:layout_height="@dimen/deleteBtnWH"
+            android:src="@drawable/eye_close" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

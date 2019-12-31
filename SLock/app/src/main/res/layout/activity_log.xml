@@ -9,20 +9,27 @@
         android:id="@+id/lbackBtn"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/lRecycler"
+        app:layout_constraintBottom_toTopOf="@id/linear"
         android:layout_width="@dimen/imageBtnWH"
         android:layout_height="@dimen/imageBtnWH"
         android:src="@drawable/back"
         android:layout_marginTop="@dimen/backBtnM"
         android:layout_marginLeft="@dimen/backBtnM"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lRecycler"
+    <LinearLayout
+        android:id="@+id/linear"
         app:layout_constraintTop_toBottomOf="@id/lbackBtn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/lReM"/>
+        android:layout_marginTop="@dimen/lReM">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

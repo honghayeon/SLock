@@ -38,7 +38,7 @@ import java.util.HashMap;
 public class SignUpTeacherActivity extends AppCompatActivity {
 
     Button signinBtn, signupBtn, continueBtn;
-    EditText tName, tId, tPwd1,tPwd2, tCertnum; // 회원가입할 선생님 이름, 인증번호
+    EditText Name, Id, Pwd1,Pwd2, Certnum; // 회원가입할 선생님 이름, 인증번호
     Intent intent;
     String url = "http://10.120.74.188:8080/signup";
     ImageView loadingImage;
@@ -55,17 +55,17 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_teacher);
 
-        final RequestQueue queue = Volley.newRequestQueue(SignUpTeacherActivity.this);
+        final RequestQueue queue = Volley.newRequestQueue(this);
 
         signinBtn = (Button)findViewById(R.id.tSigninBtn);
         signupBtn = (Button)findViewById(R.id.tSignupBtn);
         continueBtn = (Button)findViewById(R.id.tContinueBtn);
 
-        tName = (EditText)findViewById(R.id.tName);
-        tId = (EditText)findViewById(R.id.tId);
-        tPwd1 = (EditText)findViewById(R.id.tPwd1);
-        tPwd2 = (EditText)findViewById(R.id.tPwd2);
-        tCertnum = (EditText) findViewById(R.id.tCertnum);
+        Name = (EditText)findViewById(R.id.tName);
+        Id = (EditText)findViewById(R.id.tId);
+        Pwd1 = (EditText)findViewById(R.id.tPwd1);
+        Pwd2 = (EditText)findViewById(R.id.tPwd2);
+        Certnum = (EditText) findViewById(R.id.tCertnum);
 
         warnName = (TextView)findViewById(R.id.tWarnName);
         warnId = (TextView)findViewById(R.id.tWarnId);
@@ -84,7 +84,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         see1Btn = (ImageButton)findViewById(R.id.tPwd1See);
         see2Btn = (ImageButton)findViewById(R.id.tPwd2See);
 
-        tName.addTextChangedListener(new TextWatcher() {
+        Name.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnName.setVisibility(View.INVISIBLE);
@@ -94,7 +94,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnName.setVisibility(View.INVISIBLE);
 
-                if(!tName.getText().toString().equals("")){
+                if(!Name.getText().toString().equals("")){
                     deleteNameBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -104,18 +104,11 @@ public class SignUpTeacherActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(tName.getText().toString().equals("") || tId.getText().toString().equals("") || tPwd1.getText().toString().equals("") || tPwd2.getText().toString().equals("") || tCertnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        tId.addTextChangedListener(new TextWatcher() {
+        Id.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnId.setVisibility(View.INVISIBLE);
@@ -125,7 +118,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnId.setVisibility(View.INVISIBLE);
 
-                if(!tId.getText().toString().equals("")){
+                if(!Id.getText().toString().equals("")){
                     deleteIdBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -134,7 +127,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
 
                 // 아이디 중복 체크
                 HashMap<String, String> data = new HashMap<>();
-                data.put("id", tId.getText().toString());
+                data.put("id", Id.getText().toString());
                 // Request a string response from the provided URL
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/idduplicate", new JSONObject(data),
                         new Response.Listener<JSONObject>() {
@@ -165,18 +158,10 @@ public class SignUpTeacherActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(tName.getText().toString().equals("") || tId.getText().toString().equals("") || tPwd1.getText().toString().equals("") || tPwd2.getText().toString().equals("") || tCertnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
-
-        tPwd1.addTextChangedListener(new TextWatcher() {
+        Pwd1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnPwd1.setVisibility(View.INVISIBLE);
@@ -186,7 +171,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnPwd1.setVisibility(View.INVISIBLE);
 
-                if(!tPwd1.getText().toString().equals("")){
+                if(!Pwd1.getText().toString().equals("")){
                     deletePwd1Btn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -196,18 +181,11 @@ public class SignUpTeacherActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(tName.getText().toString().equals("") || tId.getText().toString().equals("") || tPwd1.getText().toString().equals("") || tPwd2.getText().toString().equals("") || tCertnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        tPwd2.addTextChangedListener(new TextWatcher() {
+        Pwd2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnPwd2.setVisibility(View.INVISIBLE);
@@ -217,7 +195,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnPwd2.setVisibility(View.INVISIBLE);
 
-                if(!tPwd2.getText().toString().equals("")){
+                if(!Pwd2.getText().toString().equals("")){
                     deletePwd2Btn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -227,18 +205,11 @@ public class SignUpTeacherActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(tName.getText().toString().equals("") || tId.getText().toString().equals("") || tPwd1.getText().toString().equals("") || tPwd2.getText().toString().equals("") || tCertnum.getText().toString().equals("")){
-                    continueBtn.setBackgroundResource(R.drawable.button2_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
-                }
-                else{
-                    continueBtn.setBackgroundResource(R.drawable.button_background);
-                    continueBtn.setTextColor(getResources().getColor(R.color.white));
-                }
+                buttonBackgournd();
             }
         });
 
-        tCertnum.addTextChangedListener(new TextWatcher() {
+        Certnum.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 warnCertnum.setVisibility(View.INVISIBLE);
@@ -248,7 +219,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 warnCertnum.setVisibility(View.INVISIBLE);
 
-                if(!tCertnum.getText().toString().equals("")){
+                if(!Certnum.getText().toString().equals("")){
                     deleteCertnumBtn.setVisibility(View.VISIBLE);
                 }
                 else{
@@ -258,7 +229,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(tName.getText().toString().equals("") || tId.getText().toString().equals("") || tPwd1.getText().toString().equals("") || tPwd2.getText().toString().equals("") || tCertnum.getText().toString().equals("")){
+                if(Name.getText().toString().equals("") || Id.getText().toString().equals("") || Pwd1.getText().toString().equals("") || Pwd2.getText().toString().equals("") || Certnum.getText().toString().equals("")){
                     continueBtn.setBackgroundResource(R.drawable.button2_background);
                     continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
                 }
@@ -270,66 +241,66 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         });
 
 
-        tName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteNameBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!tName.getText().toString().equals("")){
+                    if(!Name.getText().toString().equals("")){
                         deleteNameBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        tId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Id.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteIdBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!tId.getText().toString().equals("")){
+                    if(!Id.getText().toString().equals("")){
                         deleteIdBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        tPwd1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Pwd1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deletePwd1Btn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!tPwd1.getText().toString().equals("")){
+                    if(!Pwd1.getText().toString().equals("")){
                         deletePwd1Btn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        tPwd2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Pwd2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deletePwd2Btn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!tPwd2.getText().toString().equals("")){
+                    if(!Pwd2.getText().toString().equals("")){
                         deletePwd2Btn.setVisibility(View.VISIBLE);
                     }
                 }
             }
         });
-        tCertnum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        Certnum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) { // EdiText에 포커스가 있는지 확인
                 if(!hasFocus){ // 만약 포커스가 되어있지 않으면
                     deleteCertnumBtn.setVisibility(View.GONE);
                 }
                 else{
-                    if(!tCertnum.getText().toString().equals("")){
+                    if(!Certnum.getText().toString().equals("")){
                         deleteCertnumBtn.setVisibility(View.VISIBLE);
                     }
                 }
@@ -339,31 +310,31 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         deleteNameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tName.setText("");
+                Name.setText("");
             }
         });
         deleteIdBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tId.setText("");
+                Id.setText("");
             }
         });
         deletePwd1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tPwd1.setText("");
+                Pwd1.setText("");
             }
         });
         deletePwd2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tPwd2.setText("");
+                Pwd2.setText("");
             }
         });
         deleteCertnumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tCertnum.setText("");
+                Certnum.setText("");
             }
         });
 
@@ -372,36 +343,35 @@ public class SignUpTeacherActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(flag1 == true){
                     see1Btn.setImageResource(R.drawable.eye_open);
-                    tPwd1.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    Pwd1.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
                     flag1 = false;
                 }
                 else{
                     see1Btn.setImageResource(R.drawable.eye_close);
-                    tPwd1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    Pwd1.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
                     flag1 = true;
                 }
-                tPwd1.setSelection(tPwd1.length());
+                Pwd1.setSelection(Pwd1.length());
             }
         });
-
         see2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(flag2 == true){
                     see2Btn.setImageResource(R.drawable.eye_open);
-                    tPwd2.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    Pwd2.setInputType(InputType.TYPE_CLASS_TEXT  | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
 
                     flag2 = false;
                 }
                 else{
                     see2Btn.setImageResource(R.drawable.eye_close);
-                    tPwd2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    Pwd2.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
                     flag2 = true;
                 }
-                tPwd2.setSelection(tPwd2.length());
+                Pwd2.setSelection(Pwd2.length());
             }
         });
 
@@ -424,49 +394,49 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(tName.getText().toString().equals("") || tId.getText().toString().equals("") || tPwd1.getText().toString().equals("") || tPwd2.getText().toString().equals("") || tCertnum.getText().toString().equals("")){
+                if(Name.getText().toString().equals("") || Id.getText().toString().equals("") || Pwd1.getText().toString().equals("") || Pwd2.getText().toString().equals("") || Certnum.getText().toString().equals("")){
                     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(200);
 
-                    if (tCertnum.getText().toString().equals("")) {
+                    if (Certnum.getText().toString().equals("")) {
                         warnCertnum.setVisibility(View.VISIBLE);
 
-                        tCertnum.requestFocus();
-                        imm.showSoftInput(tCertnum, 0);
+                        Certnum.requestFocus();
+                        imm.showSoftInput(Certnum, 0);
                     }
-                    if (tPwd2.getText().toString().equals("")) {
+                    if (Pwd2.getText().toString().equals("")) {
                         warnPwd2.setVisibility(View.VISIBLE);
 
-                        tPwd2.requestFocus();
-                        imm.showSoftInput(tPwd2, 0);
+                        Pwd2.requestFocus();
+                        imm.showSoftInput(Pwd2, 0);
                     }
-                    if (tPwd1.getText().toString().equals("")) {
+                    if (Pwd1.getText().toString().equals("")) {
                         warnPwd1.setVisibility(View.VISIBLE);
 
-                        tPwd1.requestFocus();
-                        imm.showSoftInput(tPwd1, 0);
+                        Pwd1.requestFocus();
+                        imm.showSoftInput(Pwd1, 0);
                     }
-                    if (tId.getText().toString().equals("")) {
+                    if (Id.getText().toString().equals("")) {
                         warnId.setVisibility(View.VISIBLE);
 
-                        tId.requestFocus();
-                        imm.showSoftInput(tId, 0);
+                        Id.requestFocus();
+                        imm.showSoftInput(Id, 0);
                     }
-                    if (tName.getText().toString().equals("")) {
+                    if (Name.getText().toString().equals("")) {
                         warnName.setVisibility(View.VISIBLE);
 
-                        tName.requestFocus();
-                        imm.showSoftInput(tName, 0);
+                        Name.requestFocus();
+                        imm.showSoftInput(Name, 0);
                     }
                 }
                 else {
-                    if (!tPwd1.getText().toString().equals(tPwd2.getText().toString())) {
+                    if(!Pwd1.getText().toString().equals(Pwd2.getText().toString())){
                         customDialog = new CustomDialog(SignUpTeacherActivity.this, "비밀번호를 확인해 주세요.");
                         customDialog.show();
 
                         return;
                     }
-                    if (tCertnum.getText().length() != 4) {
+                    if (Certnum.getText().length() != 4) {
                         customDialog = new CustomDialog(SignUpTeacherActivity.this, "인증번호는 4자리 숫자로 입력해 주세요.");
                         customDialog.show();
 
@@ -476,9 +446,9 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                     customAnimation.show();
 
                     HashMap<String, String> data = new HashMap<>();
-                    data.put("name", tName.getText().toString());
-                    data.put("id", tId.getText().toString());
-                    data.put("pw", tPwd1.getText().toString());
+                    data.put("name", Name.getText().toString());
+                    data.put("id", Id.getText().toString());
+                    data.put("pw", Pwd1.getText().toString());
                     data.put("level", "2");
                     // Request a string response from the provided URL
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
@@ -516,5 +486,16 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                  }
             }
         });
+    }
+
+    private void buttonBackgournd() {
+        if(Name.getText().toString().equals("") || Id.getText().toString().equals("") || Pwd1.getText().toString().equals("") || Pwd2.getText().toString().equals("") || Certnum.getText().toString().equals("")){
+            continueBtn.setBackgroundResource(R.drawable.button2_background);
+            continueBtn.setTextColor(getResources().getColor(R.color.mainPurple));
+        }
+        else{
+            continueBtn.setBackgroundResource(R.drawable.button_background);
+            continueBtn.setTextColor(getResources().getColor(R.color.white));
+        }
     }
 }
