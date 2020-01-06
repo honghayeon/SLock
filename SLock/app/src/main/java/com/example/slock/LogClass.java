@@ -1,11 +1,11 @@
 package com.example.slock;
 
-public class Log {
+public class LogClass {
     String time;
     String state;
 
-    public Log() {}
-    public Log(String time, String state) {
+    public LogClass() {}
+    public LogClass(String time, String state) {
         this.time = time;
         this.state = state;
     }

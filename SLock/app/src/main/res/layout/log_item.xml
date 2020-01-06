@@ -14,15 +14,15 @@
         android:layout_height="@dimen/lImageWH"
         android:layout_marginLeft="@dimen/lMRL"/>
 
-    <TextView
-        android:id="@+id/logState"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/logImage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/lMRL"
-        android:textSize="@dimen/lStateF"/>
+<!--    <TextView-->
+<!--        android:id="@+id/logState"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintLeft_toRightOf="@id/logImage"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="@dimen/lMRL"-->
+<!--        android:textSize="@dimen/lStateF"/>-->
 
     <TextView
         android:id="@+id/logTime"

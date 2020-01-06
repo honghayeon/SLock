@@ -24,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.github.mikephil.charting.animation.Easing;
@@ -35,6 +36,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,12 +49,16 @@ import java.util.TimerTask;
 
 public class MainStudentActivity extends AppCompatActivity {
 
-    TextView userName, mainDoorState, doorState;
+    TextView userName, mainDoorState, doorState, openTime;
     ImageButton myPage;
     Button logoutBtn, requsetBtn;
     TimePicker time;
     LineChart lineChart;
     CustomDialog customDialog;
+    int[] Graph=new int[24];
+
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long   backPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,69 +78,15 @@ public class MainStudentActivity extends AppCompatActivity {
 
         mainDoorState = (TextView)findViewById(R.id.msMainDoorState);
         doorState = (TextView)findViewById(R.id.msDoorState);
+        openTime = (TextView)findViewById(R.id.msOpenTime);
 
         lineChart = (LineChart)findViewById(R.id.msChart);
 
         userName.setText(SharedPreference.getAttribute(getApplicationContext(), "name") + ",");
 
         // 그래프
-        List<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(9, 1));
-        entries.add(new Entry(12, 2));
-        entries.add(new Entry(15, 7));
-        entries.add(new Entry(18, 4));
-        entries.add(new Entry(20, 3));
-        entries.add(new Entry(21, 2));
+        final List<Entry> entries = new ArrayList<>();
 
-        LineDataSet lineDataSet = new LineDataSet(entries, "신청자 수");
-        lineDataSet.setLineWidth(2); // 선 두께
-        lineDataSet.setCircleRadius(5); // circle 두께
-        lineDataSet.setCircleColor(Color.parseColor("#46A8FB")); // circle color
-        lineDataSet.setColor(Color.parseColor("#46A8FB"));
-        lineDataSet.setDrawCircleHole(false); // circle 가운데 흰 색 구멍
-        lineDataSet.setDrawCircles(true); // circle 그리기
-        lineDataSet.setDrawHorizontalHighlightIndicator(false); // 하이라이팅
-        lineDataSet.setDrawHighlightIndicators(false); // 하이라이팅
-        lineDataSet.setDrawValues(false); // 점 위에 값
-
-        LineData lineData = new LineData(lineDataSet);
-        lineChart.setData(lineData);
-
-        XAxis xAxis = lineChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(Color.parseColor("#46A8FB")); // X축 값 색
-        xAxis.setGridColor(Color.parseColor("#F1F9FF")); // X축 줄 색
-        xAxis.setAxisMinimum(8);
-        xAxis.setAxisMaximum(21);
-
-        YAxis yLAxis = lineChart.getAxisLeft();
-        yLAxis.setTextColor(Color.parseColor("#46A8FB")); // Y축 값 색
-        yLAxis.setGridColor(Color.parseColor("#F1F9FF")); // Y축 줄 색
-        yLAxis.setAxisMinimum(0);
-        yLAxis.setDrawAxisLine(false); // 맨 처음 값
-        YAxis yRAxis = lineChart.getAxisRight(); // y축 오른쪽 비활성화
-        yRAxis.setDrawLabels(false); // label 보이기
-        yRAxis.setDrawAxisLine(false); // 줄 보이기
-        yRAxis.setDrawGridLines(false); // 라인 보이기
-
-        Description description = new Description();
-        description.setText("SLock");
-
-//        lineDataSet.setDrawFilled(true); //그래프 밑부분 색칠
-
-        lineChart.setDoubleTapToZoomEnabled(false); // 애니메이션
-        lineChart.setDrawGridBackground(false);
-        lineChart.setDescription(description);
-        lineChart.animateY(1800, Easing.EaseInCubic);
-        lineChart.invalidate();
-
-        MyMarkerView marker = new MyMarkerView(this,R.layout.text);
-        marker.setChartView(lineChart);
-        lineChart.setMarker(marker);
-
-        lineChart.setPinchZoom(true);
-
-        // 현재 현관문 상태 받아옴
         final Timer timer = new Timer();
         TimerTask TT = new TimerTask() {
             @Override
@@ -168,13 +120,14 @@ public class MainStudentActivity extends AppCompatActivity {
                             public void onErrorResponse(VolleyError error) {
                                 customDialog = new CustomDialog(MainStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
                                 customDialog.show();
-
-                                timer.cancel();
+                                moveTaskToBack(true);
+                                finish();
+                                android.os.Process.killProcess(android.os.Process.myPid());
                             }
                         }
                 );
-                request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 queue.add(request);
+
                 HashMap<String, String> data2 = new HashMap<>();
                 data2.put("rnum",SharedPreference.getAttribute(getApplicationContext(), "roomnumber"));
                 request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/second_door/read", new JSONObject(data2),
@@ -203,13 +156,124 @@ public class MainStudentActivity extends AppCompatActivity {
                             public void onErrorResponse(VolleyError error) {
                                 customDialog = new CustomDialog(MainStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
                                 customDialog.show();
-
-                                timer.cancel();
+                                moveTaskToBack(true);
+                                finish();
+                                android.os.Process.killProcess(android.os.Process.myPid());
                             }
                         }
                 );
-                request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 queue.add(request);
+
+                url = "http://10.120.74.188:8080/reserve/m_read";
+                request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                JSONObject jsonObject = null;
+                                try {
+                                    jsonObject = new JSONObject(response.toString());
+                                    String door = jsonObject.getString("time");
+
+                                    if(door.equals("0")){
+                                        openTime.setText("미정");
+                                    }
+                                    else{
+                                        openTime.setText(door);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                customDialog = new CustomDialog(MainStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+                                customDialog.show();
+                                moveTaskToBack(true);
+                                finish();
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                            }
+                        }
+                );
+                queue.add(request);
+
+                JsonArrayRequest ARRrequest = new JsonArrayRequest(Request.Method.POST, "http://10.120.74.188:8080/reserve/read", null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject jsonObject = response.getJSONObject(i);
+                                String t = jsonObject.getString("r_time");
+                                int time = Integer.parseInt(t.substring(0,2));
+                                Graph[time]++;
+                            }
+                            entries.clear();
+                            for(int i=0;i<24;i++){
+                                if(Graph[i]!=0) entries.add(new Entry(i, Graph[i]));
+                            }
+
+                            LineDataSet lineDataSet = new LineDataSet(entries, "신청자 수");
+                            lineDataSet.setLineWidth(2); // 선 두께
+                            lineDataSet.setCircleRadius(5); // circle 두께
+                            lineDataSet.setCircleColor(Color.parseColor("#46A8FB")); // circle color
+                            lineDataSet.setColor(Color.parseColor("#46A8FB"));
+                            lineDataSet.setDrawCircleHole(false); // circle 가운데 흰 색 구멍
+                            lineDataSet.setDrawCircles(true); // circle 그리기
+                            lineDataSet.setDrawHorizontalHighlightIndicator(false); // 하이라이팅
+                            lineDataSet.setDrawHighlightIndicators(false); // 하이라이팅
+                            lineDataSet.setDrawValues(false); // 점 위에 값
+
+                            LineData lineData = new LineData(lineDataSet);
+                            lineChart.setData(lineData);
+
+                            XAxis xAxis = lineChart.getXAxis();
+                            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                            xAxis.setTextColor(Color.parseColor("#46A8FB")); // X축 값 색
+                            xAxis.setGridColor(Color.parseColor("#F1F9FF")); // X축 줄 색
+                            xAxis.setAxisMinimum(0);
+                            xAxis.setAxisMaximum(24);
+
+                            YAxis yLAxis = lineChart.getAxisLeft();
+                            yLAxis.setTextColor(Color.parseColor("#46A8FB")); // Y축 값 색
+                            yLAxis.setGridColor(Color.parseColor("#F1F9FF")); // Y축 줄 색
+                            yLAxis.setAxisMinimum(0);
+                            yLAxis.setDrawAxisLine(false); // 맨 처음 값
+                            YAxis yRAxis = lineChart.getAxisRight(); // y축 오른쪽 비활성화
+                            yRAxis.setDrawLabels(false); // label 보이기
+                            yRAxis.setDrawAxisLine(false); // 줄 보이기
+                            yRAxis.setDrawGridLines(false); // 라인 보이기
+
+                            Description description = new Description();
+                            description.setText("SLock");
+
+                            lineChart.setDoubleTapToZoomEnabled(false); // 애니메이션
+                            lineChart.setDrawGridBackground(false);
+                            lineChart.setDescription(description);
+                            lineChart.invalidate();
+
+                            lineChart.setPinchZoom(true);
+
+                            for(int i=0;i<response.length();i++){
+                                JSONObject jsonObject = response.getJSONObject(i);
+                                String t = jsonObject.getString("r_time");
+                                int time = Integer.parseInt(t.substring(0,2));
+                                Graph[time]=0;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        customDialog = new CustomDialog(MainStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+                        customDialog.show();
+                        moveTaskToBack(true);
+                        finish();
+                    }
+                });
+                queue.add(ARRrequest);
             }
         };
 
@@ -243,6 +307,42 @@ public class MainStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 요청 DB에 보내기
+                String url = "http://10.120.74.188:8080/reserve/write";
+                HashMap<String, String> data = new HashMap<>();
+
+                String hour = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    hour = Integer.toString(time.getHour());
+                }
+                String minute = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    minute = Integer.toString(time.getMinute());
+                }
+
+                String id=SharedPreference.getAttribute(getApplicationContext(), "id");
+                data.put("id",id);
+                data.put("hour",hour);
+                data.put("minute",minute);
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                customDialog = new CustomDialog(MainStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+                                customDialog.show();
+                                moveTaskToBack(true);
+                                finish();
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                            }
+                        }
+                );
+                request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                queue.add(request);
 
                 ToastCustom("요청 완료");
             }
@@ -264,5 +364,21 @@ public class MainStudentActivity extends AppCompatActivity {
 
         toast.setView(layout);
         toast.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backPressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime)
+        {
+            super.onBackPressed();
+        }
+        else
+        {
+            backPressedTime = tempTime;
+            ToastCustom("한 번 더 누르면 앱이 종료됩니다.");
+        }
     }
 }
