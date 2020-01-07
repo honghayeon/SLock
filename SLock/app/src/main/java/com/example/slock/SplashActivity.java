@@ -11,6 +11,9 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SharedPreference.removeAllAttribute(getApplicationContext());
+
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

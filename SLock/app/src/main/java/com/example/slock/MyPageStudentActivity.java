@@ -87,7 +87,7 @@ public class MyPageStudentActivity extends AppCompatActivity {
                 String id=SharedPreference.getAttribute(getApplicationContext(), "id");
                 data.put("id", id);
                 data.put("pw", NowPwd.getText().toString());
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/login", new JSONObject(data), new Response.Listener<JSONObject>() {
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://192.168.1.12:8080/login", new JSONObject(data), new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
@@ -105,8 +105,7 @@ public class MyPageStudentActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        customDialog = new CustomDialog(MyPageStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                        customDialog.show();
+                        ExitDialog();
                     }
                 });
                 request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -281,7 +280,7 @@ public class MyPageStudentActivity extends AppCompatActivity {
                     if(!Pwd1.getText().toString().equals("") && !Pwd2.getText().toString().equals("")){ // 바꿀 비밀번호 두개가 비어있지 않은지 확인
                         if(Pwd1.getText().toString().equals(Pwd2.getText().toString())) { // 비밀번호가 두개가 일치하는지 확인
                             data.put("cpw", Pwd1.getText().toString());
-                            JsonObjectRequest request = request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/pwchange", new JSONObject(data),
+                            JsonObjectRequest request = request = new JsonObjectRequest(Request.Method.POST, "http://192.168.1.12:8080/pwchange", new JSONObject(data),
                                     new Response.Listener<JSONObject>() {
                                         @Override
                                         public void onResponse(JSONObject response) {
@@ -293,8 +292,7 @@ public class MyPageStudentActivity extends AppCompatActivity {
                                     new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
-                                            customDialog = new CustomDialog(MyPageStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                                            customDialog.show();
+                                            ExitDialog();
                                         }
                                     }
                             );
@@ -308,7 +306,7 @@ public class MyPageStudentActivity extends AppCompatActivity {
                     }
                     if(!Roomnum.getText().toString().equals("")){
                         data.put("crnum", Roomnum.getText().toString());
-                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/rnumchange", new JSONObject(data),
+                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://192.168.1.12:8080/rnumchange", new JSONObject(data),
                                 new Response.Listener<JSONObject>() {
                                     @Override
                                     public void onResponse(JSONObject response) {
@@ -321,8 +319,7 @@ public class MyPageStudentActivity extends AppCompatActivity {
                                 new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        customDialog = new CustomDialog(MyPageStudentActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                                        customDialog.show();
+                                        ExitDialog();
                                     }
                                 });
                         request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
@@ -345,6 +342,22 @@ public class MyPageStudentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+    }
+
+    public void ExitDialog(){
+        final CustomDialog customDialog = new CustomDialog(this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+        customDialog.show();
+
+        customDialog.btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customDialog.dismiss();
+
+                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
             }
         });
     }

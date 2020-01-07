@@ -56,41 +56,6 @@ public class Frag3Floor extends Fragment {
         room319 = (Switch)view.findViewById(R.id.room319);
         room320 = (Switch)view.findViewById(R.id.room320);
 
-        final Timer timer = new Timer();
-        TimerTask TT = new TimerTask() {
-            @Override
-            public void run() {
-                all = ((DoorActivity)getActivity()).getAll();
-
-                room301.setChecked(all);
-                room302.setChecked(all);
-                room303.setChecked(all);
-                room304.setChecked(all);
-                room305.setChecked(all);
-                room306.setChecked(all);
-                room307.setChecked(all);
-                room308.setChecked(all);
-                room309.setChecked(all);
-                room310.setChecked(all);
-                room311.setChecked(all);
-                room312.setChecked(all);
-                room313.setChecked(all);
-                room314.setChecked(all);
-                room315.setChecked(all);
-                room316.setChecked(all);
-                room317.setChecked(all);
-                room318.setChecked(all);
-                room319.setChecked(all);
-                room320.setChecked(all);
-
-                if(room301.isChecked()){
-                    timer.cancel();
-                }
-            }
-        };
-
-        timer.schedule(TT, 0, 1000); //Timer 실행
-
         return  view;
     }
 }

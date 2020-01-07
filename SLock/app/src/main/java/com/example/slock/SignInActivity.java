@@ -223,9 +223,6 @@ public class SignInActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(getApplicationContext(), MainTeacherActivity.class);
-                startActivity(intent2);
-
                 if(inId.getText().toString().equals("") || inPwd.getText().toString().equals("")){
                     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                     vibrator.vibrate(200);
@@ -246,7 +243,7 @@ public class SignInActivity extends AppCompatActivity {
                 else{
                     customAnimation.show();
 
-                    String url = "http://10.120.74.188:8080/login";
+                    String url = "http://192.168.1.12:8080/login";
                     HashMap<String, String> data = new HashMap<>();
                     data.put("id", inId.getText().toString());
                     data.put("pw", inPwd.getText().toString());
@@ -294,7 +291,7 @@ public class SignInActivity extends AppCompatActivity {
                                             finish();
                                         }
                                         else{
-                                            customDialog = new CustomDialog(getApplicationContext(), "일치하는 회원 정보가 없습니다.\n아이디 비밀번호를 확인해 주세요.");
+                                            customDialog = new CustomDialog(SignInActivity.this, "일치하는 회원 정보가 없습니다.\n아이디 비밀번호를 확인해 주세요.");
                                             customDialog.show();
                                         }
                                     } catch (JSONException e) {
@@ -306,14 +303,28 @@ public class SignInActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             customAnimation.dismiss();
 
-                            customDialog = new CustomDialog(SignInActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                            customDialog.show();
+                            ExitDialog();
                         }
-                    }
-                    );
+                    });
                     request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                     queue.add(request);
                 }
+            }
+        });
+    }
+
+    public void ExitDialog(){
+        customDialog = new CustomDialog(SignInActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+        customDialog.show();
+
+        customDialog.btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finishAffinity();
+                System.runFinalization();
+                System.exit(0);
+
+                customDialog.dismiss();
             }
         });
     }

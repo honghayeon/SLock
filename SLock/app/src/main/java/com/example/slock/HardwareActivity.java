@@ -44,7 +44,7 @@ public class HardwareActivity extends AppCompatActivity {
         TimerTask TT = new TimerTask() {
             @Override
             public void run() {
-                String url = "http://10.120.74.188:8080/log/hardware";
+                String url = "http://192.168.1.12:8080/log/hardware";
                 HashMap<String, String> data = new HashMap<>();
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
                         new Response.Listener<JSONObject>() {
@@ -92,8 +92,6 @@ public class HardwareActivity extends AppCompatActivity {
                             public void onErrorResponse(VolleyError error) {
                                 customDialog = new CustomDialog(HardwareActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
                                 customDialog.show();
-                                moveTaskToBack(true);
-                                finish();
                             }
                         }
                 );

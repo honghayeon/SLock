@@ -1,9 +1,11 @@
 package com.example.slock;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +25,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -55,7 +56,7 @@ public class MainTeacherActivity extends AppCompatActivity {
     int[] Graph=new int[24];
 
     private final long FINISH_INTERVAL_TIME = 2000;
-    private long   backPressedTime = 0;
+    private long backPressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +93,7 @@ public class MainTeacherActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 반복실행할 구문
-                String url = "http://10.120.74.188:8080/main_door/read";
+                String url = "http://192.168.1.12:8080/main_door/read";
                 HashMap<String, String> data = new HashMap<>();
 
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
@@ -122,17 +123,13 @@ public class MainTeacherActivity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                customDialog = new CustomDialog(MainTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                                customDialog.show();
-                                moveTaskToBack(true);
-                                finish();
-                                android.os.Process.killProcess(android.os.Process.myPid());
+                                ExitDialog();
                             }
                         }
                 );
                 queue.add(request);
 
-                url = "http://10.120.74.188:8080/reserve/m_read";
+                url = "http://192.168.1.12:8080/reserve/m_read";
                 request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
                         new Response.Listener<JSONObject>() {
                             @Override
@@ -156,17 +153,13 @@ public class MainTeacherActivity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                customDialog = new CustomDialog(MainTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                                customDialog.show();
-                                moveTaskToBack(true);
-                                finish();
-                                android.os.Process.killProcess(android.os.Process.myPid());
+                                ExitDialog();
                             }
                         }
                 );
                 queue.add(request);
 
-                JsonArrayRequest ARRrequest = new JsonArrayRequest(Request.Method.POST, "http://10.120.74.188:8080/reserve/read", null, new Response.Listener<JSONArray>() {
+                JsonArrayRequest ARRrequest = new JsonArrayRequest(Request.Method.POST, "http://192.168.1.12:8080/reserve/read", null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
@@ -220,7 +213,12 @@ public class MainTeacherActivity extends AppCompatActivity {
                             lineChart.setDescription(description);
                             lineChart.invalidate();
 
+                            MyMarkerView marker = new MyMarkerView(MainTeacherActivity.this,R.layout.text);
+                            marker.setChartView(lineChart);
+                            lineChart.setMarker(marker);
+
                             lineChart.setPinchZoom(true);
+
                             for(int i=0;i<response.length();i++){
                                 JSONObject jsonObject = response.getJSONObject(i);
                                 String t = jsonObject.getString("r_time");
@@ -234,19 +232,17 @@ public class MainTeacherActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        customDialog = new CustomDialog(MainTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                        customDialog.show();
-                        moveTaskToBack(true);
-                        finish();
+                        ExitDialog();
                     }
                 });
                 queue.add(ARRrequest);
             }
         };
+
         doorSw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "http://10.120.74.188:8080/main_door/write";
+                String url = "http://192.168.1.12:8080/main_door/write";
                 HashMap<String, String> data = new HashMap<>();
 
                 if(doorSw.isChecked()){
@@ -264,11 +260,7 @@ public class MainTeacherActivity extends AppCompatActivity {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                customDialog = new CustomDialog(MainTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                                customDialog.show();
-                                moveTaskToBack(true);
-                                finish();
-                                android.os.Process.killProcess(android.os.Process.myPid());
+                                ExitDialog();
                             }
                         }
                 );
@@ -319,12 +311,41 @@ public class MainTeacherActivity extends AppCompatActivity {
         });
 
         reserveBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 // 예약 버튼 누르면 DB에 값 전달
                 // time 값
+                String url = "http://192.168.1.12:8080/reserve/m_write";
+                HashMap<String, String> data = new HashMap<>();
 
-               ToastCustom("예약 완료");
+                String hour = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    hour = Integer.toString(time.getHour());
+                }
+                String minute = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                    minute = Integer.toString(time.getMinute());
+                }
+
+                data.put("hour",hour);
+                data.put("minute",minute);
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                ExitDialog();
+                            }
+                        }
+                );
+                request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                queue.add(request);
             }
         });
 
@@ -345,6 +366,22 @@ public class MainTeacherActivity extends AppCompatActivity {
         });
 
         timer.schedule(TT, 0, 1000); //Timer 실행
+    }
+
+    public void ExitDialog(){
+        customDialog = new CustomDialog(this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+        customDialog.show();
+
+        customDialog.btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customDialog.dismiss();
+
+                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
+            }
+        });
     }
 
     public void ToastCustom(String word){

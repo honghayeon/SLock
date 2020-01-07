@@ -40,7 +40,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
     Button signinBtn, signupBtn, continueBtn;
     EditText Name, Id, Pwd1,Pwd2, Certnum; // 회원가입할 선생님 이름, 인증번호
     Intent intent;
-    String url = "http://10.120.74.188:8080/signup";
+    String url = "http://192.168.1.12:8080/signup";
     ImageView loadingImage;
     Vibrator vibrator;
     CustomAnimation customAnimation;
@@ -56,6 +56,8 @@ public class SignUpTeacherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup_teacher);
 
         final RequestQueue queue = Volley.newRequestQueue(this);
+
+        customAnimation = new CustomAnimation(SignUpTeacherActivity.this);
 
         signinBtn = (Button)findViewById(R.id.tSigninBtn);
         signupBtn = (Button)findViewById(R.id.tSignupBtn);
@@ -129,7 +131,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                 HashMap<String, String> data = new HashMap<>();
                 data.put("id", Id.getText().toString());
                 // Request a string response from the provided URL
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://10.120.74.188:8080/idduplicate", new JSONObject(data),
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, "http://192.168.1.12:8080/idduplicate", new JSONObject(data),
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
@@ -465,8 +467,7 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                                             startActivity(intent);
                                             finish();
                                         } else {
-                                            customDialog = new CustomDialog(SignUpTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 시도해 주세요.");
-                                            customDialog.show();
+                                            ExitDialog();
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -477,13 +478,28 @@ public class SignUpTeacherActivity extends AppCompatActivity {
                         public void onErrorResponse(VolleyError error) {
                             customAnimation.dismiss();
 
-                            customDialog = new CustomDialog(SignUpTeacherActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                            customDialog.show();
+                            ExitDialog();
                         }
                     });
                     request.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                     queue.add(request);
                  }
+            }
+        });
+    }
+
+    public void ExitDialog(){
+        final CustomDialog customDialog = new CustomDialog(this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+        customDialog.show();
+
+        customDialog.btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customDialog.dismiss();
+
+                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
             }
         });
     }

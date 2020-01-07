@@ -89,39 +89,6 @@ public class DoorActivity extends AppCompatActivity {
 //        fragment.room519 = (Switch)findViewById(R.id.fragment.room519);
 //        fragment.room520 = (Switch)findViewById(R.id.fragment.room520);
 
-//        if(all.isChecked()){
-//            setThirdFloor(true);
-////            setFourthFloor(true);
-////            setFifthFloor(true);
-//        }
-//        else{
-//            setThirdFloor(false);
-////            setFourthFloor(false);
-//////            setFifthFloor(false);
-////        }
-//
-//        if(thirdFloor.isChecked()){
-//            setThirdFloor(true);
-//        }
-//        else{
-//            setThirdFloor(false);
-//        }
-
-//        if(fourthFloor.isChecked()){
-//            setFourthFloor(true);
-//        }
-//        else{
-//            setFourthFloor(false);
-//        }
-//
-//        if(fifthFloor.isChecked()){
-//            setFifthFloor(true);
-//        }
-//        else{
-//            setFifthFloor(false);
-//        }
-
-
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -280,4 +247,24 @@ public class DoorActivity extends AppCompatActivity {
             return false;
     }
 
+    public boolean get3Floor(){
+        if(thirdFloor.isChecked())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean get4Floor(){
+        if(fourthFloor.isChecked())
+            return true;
+        else
+            return false;
+    }
+
+    public boolean get5Floor(){
+        if(fifthFloor.isChecked())
+            return true;
+        else
+            return false;
+    }
 }

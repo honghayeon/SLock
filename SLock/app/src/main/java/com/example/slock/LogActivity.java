@@ -62,7 +62,7 @@ public class LogActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // 반복실행할 구문
-                String url = "http://10.120.74.188:8080/log/read";
+                String url = "http://192.168.1.12:8080/log/read";
                 JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -82,18 +82,14 @@ public class LogActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        customDialog = new CustomDialog(LogActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                        customDialog.show();
-                        moveTaskToBack(true);
-                        finish();
-                        android.os.Process.killProcess(android.os.Process.myPid());
+                        ExitDialog();
                     }
                 });
                 queue.add(request);
             }
         });
         // 반복실행할 구문
-        String url = "http://10.120.74.188:8080/log/read";
+        String url = "http://192.168.1.12:8080/log/read";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -113,13 +109,25 @@ public class LogActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                customDialog = new CustomDialog(LogActivity.this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
-                customDialog.show();
-                moveTaskToBack(true);
-                finish();
-                android.os.Process.killProcess(android.os.Process.myPid());
+                ExitDialog();
             }
         });
         queue.add(request);
+    }
+
+    public void ExitDialog(){
+        final CustomDialog customDialog = new CustomDialog(this, "이용에 불편을 드려 죄송합니다.\n잠시 후 다시 접속해 주세요.");
+        customDialog.show();
+
+        customDialog.btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customDialog.dismiss();
+
+                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
+            }
+        });
     }
 }
