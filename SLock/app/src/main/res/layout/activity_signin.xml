@@ -186,30 +186,4 @@
         style="@style/ContinueBtnStyle"
         app:layout_constraintVertical_bias="0.9" />
 
-    <Button
-        android:id="@+id/inReId"
-        app:layout_constraintTop_toBottomOf="@+id/inContinueBtn"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/inRePwd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="아이디 찾기"
-        android:textColor="@color/navyGray"
-        app:layout_constraintHorizontal_weight="1"
-        android:layout_marginLeft="@dimen/MRL"
-        android:background="@color/invisible" />
-
-    <Button
-        android:id="@+id/inRePwd"
-        app:layout_constraintTop_toBottomOf="@+id/inContinueBtn"
-        app:layout_constraintLeft_toRightOf="@id/inReId"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="비밀번호 재발급"
-        android:textColor="@color/navyGray"
-        app:layout_constraintHorizontal_weight="1"
-        android:layout_marginRight="@dimen/MRL"
-        android:background="@color/invisible" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

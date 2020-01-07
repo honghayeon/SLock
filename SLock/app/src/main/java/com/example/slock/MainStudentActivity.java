@@ -93,7 +93,7 @@ public class MainStudentActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 반복실행할 구문
-                String url = "http://10.120.74.188:8080/main_door/read";
+                String url = "http://192.168.1.12:8080/main_door/read";
                 HashMap<String, String> data = new HashMap<>();
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data),
                         new Response.Listener<JSONObject>() {
